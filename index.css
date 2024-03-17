@@ -1,0 +1,11 @@
+body {
+  --space-cadet : #82337E;
+  --midnight-x : #023047;
+  --sunrise-x : #FA8400;
+  --midday-x : #1CACD8;
+  --dark : #242837;
+  --grey : #404045;
+  --light-grey: #8F8F94;
+  --lighter-grey: #DFDFE4;
+  font-family: KoHo, sans-serif;
+}
