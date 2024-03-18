@@ -1092,7 +1092,7 @@ function App() {
                 </RadioGroup>
                 </Grid>
                 <Grid item xs={12} sm={12} md={12}>
-                <FormLabel component="legend">Como pretende me capacitar na Pixel?</FormLabel>
+                <FormLabel component="legend">Como pretende capacitar-se na Pixel?</FormLabel>
                 <RadioGroup row aria-label="trilhas" name="trilhas"
                 onChange={trilhasChangeHandler}>
                   <FormControlLabel value="Já tenho capacitação" control={<Radio />} label="Já tenho capacitação" />
