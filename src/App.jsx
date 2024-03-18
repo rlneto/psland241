@@ -1069,7 +1069,7 @@ function App() {
                 onChange={reuniaoChangeHandler}>
                   <FormControlLabel value="22:30" control={<Radio />} label="22:30" />
                   <FormControlLabel value="23:00" control={<Radio />} label="23:00" />
-                  <FormControlLabel value="Assim que chegar em casa" control={<Radio />} label="Assim que eu chegar em casa" />
+                  <FormControlLabel value="Assim que chegar em casa" control={<Radio />} label="Assim que chegar em casa" />
                 </RadioGroup>
                 </Grid>
                 <Grid item xs={12} sm={612} md={12}>
