@@ -167,6 +167,7 @@ function App() {
   const whatsappRef = useRef(null);
   const linkedinRef = useRef(null);
   const githubRef = useRef(null);
+  const recaptchaRef = useRef(null);
 
 
 
@@ -232,11 +233,11 @@ function App() {
   // }
   // , [respostas]);
 
-  const [token, setToken] = useState(false);
+  const [token, setToken] = useState(null);
 
-  const geraTokenRecaptcha = (tokenrc) => {
-    setToken(tokenrc);
-    // console.log(token)            
+  const geraTokenRecaptcha = () => {
+    const tokenrc = recaptchaRef.current.getValue();
+    setToken(tokenrc);         
   }
 
   const [sucesso, setSucesso] = useState(false);
@@ -529,16 +530,6 @@ function App() {
     setRespostas({...respostas, github: githubRef.current.value});
   }
 
-  // const enviarHandler = () => {
-  //   console.log('Enviando');
-  //   api.post('/', respostas)
-  //   .then((response) => {
-  //     console.log(response);
-  //   })
-  //   .catch((error) => {
-  //     console.log(error);
-  //   });
-  // }
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -1161,6 +1152,7 @@ function App() {
               <Grid item xs={12} sm={6} md={6}>
               <Typography sx={{align : 'justify', }} variant="h5"/>
               <ReCaptcha
+              ref={recaptchaRef}
               sitekey="6LefiZwpAAAAACAPYBupkycHvuK3j-Y7016LVZ9g"
               onChange={geraTokenRecaptcha}  
               /> </Grid>
