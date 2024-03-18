@@ -239,6 +239,7 @@ function App() {
     // console.log(token)            
   }
 
+  const [sucesso, setSucesso] = useState(false);
 
   const nomeChangeHandler = () => {
     setRespostas({...respostas, nome: nomeRef.current.value});
@@ -613,6 +614,7 @@ function App() {
           setErrorTitulo('Sucesso!');
           setErrorMessage('Inscrição feita com sucesso! Aguarde o resultado no e-mail informado.');
           setRespostas(respostas_padrao);
+          setSucesso(true);
           handleOpen();
           setLoading(false);
         })
@@ -1163,7 +1165,7 @@ function App() {
               onChange={geraTokenRecaptcha}  
               /> </Grid>
               <Grid item xs={12} sm={6} md={6}>
-              <Button disabled={loading || !preenchidos }
+              <Button disabled={loading || !preenchidos || sucesso}
               variant="contained" endIcon={<SendIcon />} sx={{width: 1, mx: 'auto', backgroundColor: theme.palette.midnight.main, color: theme.palette.sunrise.main,}} 
               onClick={enviarHandler}
               >{loading ? <CircularProgress size={24} /> : 'Enviar'}</Button>
