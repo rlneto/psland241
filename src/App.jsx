@@ -25,6 +25,7 @@ import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import Axios from 'axios';
 import shared from './styles/Shared.module.css'
+import ReCaptcha from 'react-google-recaptcha';
 import { Form } from 'react-router-dom';
 
 const api = Axios.create({
@@ -209,6 +210,13 @@ function App() {
     console.log(respostas);
   }
   , [respostas]);
+  const [token, setToken] = useState('');
+
+  const geraTokenRecaptcha = (tokenrc) => {
+    setToken(tokenrc);
+    console.log(token)            
+  }
+
 
   const nomeChangeHandler = () => {
     setRespostas({...respostas, nome: nomeRef.current.value});
@@ -954,6 +962,10 @@ function App() {
                 label="GitHub" variant="outlined" />
               </FormControl>
               <Typography sx={{align : 'justify', mt : 3, mb : 3 }} variant="h5"/>
+              <ReCaptcha
+              sitekey="6LefiZwpAAAAACAPYBupkycHvuK3j-Y7016LVZ9g"
+              onChange={geraTokenRecaptcha}  
+              />
               <Button variant="contained" endIcon={<SendIcon />} sx={{width: 400, mt: 3, mx: 'auto', backgroundColor: theme.palette.midnight.main, color: theme.palette.sunrise.main,}} 
               onClick={enviarHandler}
               >Enviar</Button>
