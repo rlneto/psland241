@@ -233,7 +233,6 @@ function App() {
 
   const geraTokenRecaptcha = () => {
     const tokenrc = recaptchaRef.current.getValue();
-    console.log(tokenrc);
     setToken(tokenrc);         
   }
 
