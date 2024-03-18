@@ -953,7 +953,7 @@ function App() {
                 </RadioGroup>
                 </Grid>
                 <Grid item xs={12} sm={12} md={12}>
-                <FormLabel component="legend">Em qual horário pretendo estar nas reuniões remotas com a câmera e microfone ligados?</FormLabel>
+                <FormLabel component="legend">Em qual horário pretende estar nas reuniões remotas com a câmera e microfone ligados?</FormLabel>
                 <RadioGroup row aria-label="reuniao" name="reuniao"
                 onChange={reuniaoChangeHandler}>
                   <FormControlLabel value="22:30" control={<Radio />} label="22:30" />
@@ -962,7 +962,7 @@ function App() {
                 </RadioGroup>
                 </Grid>
                 <Grid item xs={12} sm={612} md={12}>
-                <FormLabel component="legend">Quantas horas semanais pretendo dedicar às atividades na Pixel?</FormLabel>
+                <FormLabel component="legend">Quantas horas semanais pretende dedicar às atividades na Pixel?</FormLabel>
 
                 <RadioGroup row aria-label="oitohoras" name="oitohoras"
                 onChange={oitohorasChangeHandler}>
@@ -981,11 +981,11 @@ function App() {
                 </RadioGroup>
                 </Grid>
                 <Grid item xs={12} sm={12} md={12}>
-                <FormLabel component="legend">Como pretendo me capacitar na Pixel?</FormLabel>
+                <FormLabel component="legend">Como pretende me capacitar na Pixel?</FormLabel>
                 <RadioGroup row aria-label="trilhas" name="trilhas"
                 onChange={trilhasChangeHandler}>
                   <FormControlLabel value="Já tenho capacitação" control={<Radio />} label="Já tenho capacitação" />
-                  <FormControlLabel value="De maneira proativa, estudando" control={<Radio />} label="De maneira proativa, estudando" />
+                  <FormControlLabel value="Estudando por conta própria" control={<Radio />} label="De maneira proativa, estudando" />
                   <FormControlLabel value="Nas aulas síncronas ministradas pelos membros da Pixel aos sábados à noite" control={<Radio />} label="Nas aulas síncronas ministradas pelos membros da Pixel aos sábados à noite" />
                 </RadioGroup>
                 </Grid>
