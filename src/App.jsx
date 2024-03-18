@@ -30,7 +30,6 @@ import Axios from 'axios';
 import shared from './styles/Shared.module.css'
 import ReCaptcha from 'react-google-recaptcha';
 import Logo from './components/Logo';
-import { set } from 'mongoose';
 
 const api = Axios.create({
   baseURL: 'https://psbackend-pelc.onrender.com/api/v1/register/',
@@ -227,15 +226,16 @@ function App() {
   };
 
 
-  useEffect(() => {
-    console.log(respostas);
-  }
-  , [respostas]);
+  // useEffect(() => {
+  //   console.log(respostas);
+  // }
+  // , [respostas]);
+
   const [token, setToken] = useState(false);
 
   const geraTokenRecaptcha = (tokenrc) => {
     setToken(tokenrc);
-    console.log(token)            
+    // console.log(token)            
   }
 
 
@@ -613,10 +613,10 @@ function App() {
           handleOpen();
           setLoading(false);
         })
-        .catch((error) => {
+        .catch(() => {
           setErrorTitulo('Erro');
           setErrorMessage(`Erro ao enviar os dados!`);
-          console.log(error);
+          // console.log(error);
           handleOpen();
           setLoading(false);
         });
