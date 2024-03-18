@@ -19,8 +19,12 @@
 
 .backgroundStyle {
     background-image: linear-gradient(0deg, var(--midnight-x) 0%, var(--space-cadet) 100%);
-    height: 100%;
-    width: 100%;
+      background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 100vh; /* Ensure it fills the viewport */
+    overflow: auto; /* Allow scrolling */
+
 }
 
 .height100 {

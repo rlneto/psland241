@@ -7,6 +7,7 @@ import { CssBaseline } from '@mui/material';
 import { ThemeProvider } from '@emotion/react';
 import { styled } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
+import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 import FormControl from '@mui/material/FormControl';
 import FormGroup from '@mui/material/FormGroup';
@@ -519,34 +520,41 @@ function App() {
   return (
         <ThemeProvider theme={theme}>
       <CssBaseline />
-    <div className={`${shared.flex} ${shared.column} ${shared.backgroundStyle} ${shared.alignCenter}`}>
-      <div className={`${shared.alignCenter} ${shared.marginTop} ${shared.padding20}`}>
-      <Card sx={{width : 1, p : 0.3, mx : 'auto', align : 'center', boxShadow : 3}}>
+      <div className={`${shared.backgroundStyle}`}>
+      <Grid container spacing={1} direction="column" justifyContent="center" alignItems="center">
+        <Grid item xs={12} sm={12} md={12} style={{ margin: '20px' }}>
+      <Card sx={{width : 0.95, maxWidth : "1200px", height: 0.9, p : 0.1, mx : 'auto', align : 'center', boxShadow : 3}}>
         <CardContent>
+          <Grid container spacing={1} direction="column" justifyContent="center" alignItems="center">
+            <Grid item xs={12} sm={12} md={12}>
             <Logo />
-          <div className= {`${shared.marginTop} ${shared.alignCenter}`}>
+            </Grid>
+          <Grid item xs={12} sm={12} md={12}>
             <Typography sx={{align : 'justify', mx : 'auto' }} variant="h5">
               Boas-vindas à primeira etapa do processo 24.1 de recrutamento da Pixel!
             </Typography>
+          </Grid>
+          <Grid item xs={12} sm={12} md={12}>
             <Typography sx={{ align : 'justify', mx : 'auto' , mb : 3}} variant="p">
               A <Link href="https://ejpixel.com.br/" underline="none" >Pixel</Link> é a Empresa Júnior dos cursos de Ciências da Computação e Sistemas de Informação da UFSC
             </Typography>
-            <Box
-            component="form"
-            sx={{'& > :not(style)': { m: 1, width: '30rem' },}}
-            noValidate
-            autoComplete="off">
+            </Grid>
+            <Grid container padding={2} spacing={1} direction="column" justifyContent="center" alignItems="left">
             <Typography sx={{align : 'justify', mt : 3, mb : 3 }} variant="h5">
               Passo 1 : Informações Pessoais
             </Typography>
-            <FormControl variant="outlined" sx={{width: 400, mt: 2, mx: 'auto'}}>
+            <Grid container spacing={1} direction="row" justifyContent="center" alignItems="center">
+            <Grid item xs={12} sm={6} md={4}>
+            <FormControl variant="outlined" sx={{width: 1, mt: 2, mx: 'auto'}}>
               <InputLabel htmlFor="nome"></InputLabel>
               <TextField  required id="nome" inputRef={nomeRef}
               onChange={nomeChangeHandler}
               label="Nome Completo" variant="outlined"/>
             </FormControl>
+            </Grid>
+            <Grid item xs={12} sm={6} md={4}>
             <FormControl
-            variant="outlined" sx={{width: 400, mt: 2, mx: 'auto'}}>
+            variant="outlined" sx={{width: 1, mt: 2, mx: 'auto'}}>
               <InputLabel id="label-genero">Com qual gênero você se identifica?*</InputLabel>
               <Select
               labelId="label-genero"
@@ -561,9 +569,9 @@ function App() {
                 ))}
               </Select>
             </FormControl>
-                        <Typography sx={{align : 'justify', mt : 3, mb : 3 }} variant="h5">
-            </Typography>
-            <FormControl variant="outlined" sx={{width: 400, mt: 2, mx: 'auto'}}>
+            </Grid>
+            <Grid item xs={12} sm={6} md={4}>
+            <FormControl variant="outlined" sx={{width: 1, mt: 2, mx: 'auto'}}>
               <InputLabel id="label-raca">Com qual grupo étnico você se identifica?*</InputLabel>
               <Select
               labelId="label-raca"
@@ -578,10 +586,16 @@ function App() {
                 ))}
               </Select>
             </FormControl>
-            <Typography sx={{align : 'justify', mt : 3, mb : 3 }} variant="h5">
-              Passo 2 : Informações Acadêmicas
-            </Typography>
-            <FormControl variant="outlined" sx={{width: 400, mt: 2, mx: 'auto'}}>
+            </Grid>
+            </Grid>
+            <Grid container spacing={1} direction="row" justifyContent="left" alignItems="center">
+              <Grid item xs={12} sm={12} md={12}>
+              <Typography sx={{align : 'justify', mt : 3, mb : 3 }} variant="h5">
+                Passo 2 : Informações Acadêmicas
+              </Typography>
+              </Grid>
+              <Grid item xs={12} sm={6} md={6}>
+            <FormControl variant="outlined" sx={{width: 1, mt: 2, mx: 'auto'}}>
               <InputLabel id="label-curso">Qual é o seu curso?*</InputLabel>
               <Select
               labelId="label-curso"
@@ -597,16 +611,20 @@ function App() {
               </Select>
 
             </FormControl>
-            <FormControl variant="outlined" sx={{width: 400, mt: 2, mx: 'auto'}}>
+            </Grid>
+            <Grid item xs={12} sm={6} md={6}>
+            <FormControl variant="outlined" sx={{width: 1, mt: 2, mx: 'auto'}}>
               <InputLabel htmlFor="matricula"></InputLabel>
               <TextField required id="matricula" {...(erroMatricula ? {error: true, helperText: erroMatricula} : {}) }
               inputRef={matriculaRef}
               onChange={matriculaChangeHandler}
               label="Qual seu número de matrícula?" variant="outlined" />
             </FormControl>
+            </Grid>
+            <Grid item xs={12} sm={12} md={12}>
             <Typography sx={{align : 'justify', mt : 3, mb : 3 }} variant="h5">
             </Typography>
-            <FormControl variant="outlined" sx={{width: 400, mt: 2, mx: 'auto'}}>
+            <FormControl variant="outlined" sx={{width: 1, mt: 2, mx: 'auto'}}>
               <PixelSlider
                 value={fase}
                 inputRef={faseRef}
@@ -622,7 +640,9 @@ function App() {
                 Fase que está no curso (aproximadamente): {fase}ª
               </Typography>
             </FormControl>
-            <FormControl variant="outlined" sx={{width: 400, mx: 'auto'}}>
+            </Grid>
+            <Grid item xs={12} sm={12} md={12}>
+            <FormControl variant="outlined" sx={{width: 1, mx: 'auto'}}>
               <PixelSlider
                 value={horas}
                 inputRef={horasRef}
@@ -638,34 +658,48 @@ function App() {
                 Total de horas-aula que está cursando esse semestre: {horas} h.a.
               </Typography>
             </FormControl>
-            <Typography sx={{align : 'justify', mt : 3, mb : 3 }} variant="h5">
+            </Grid>
+            </Grid>
+            <Grid container spacing={1} direction="row" justifyContent="left" alignItems="center">
+              <Grid item xs={12} sm={12} md={12}>
+                <Typography sx={{align : 'justify', mt : 3, mb : 3 }} variant="h5">
               Passo 3 : Informações Profissionais
-            </Typography>
-            <FormControl variant="outlined" sx={{width: 400, mt: 2, mx: 'auto'}}>
-              <TextField
-                id="trab"
-                inputRef={trabRef}
-                onChange={trabChangeHandler}
-                label="Você trabalha ou faz estágio atualmente? Fale sobre"
-                multiline
-                rows={4}
-                defaultValue=""
-              />
-            </FormControl>
-            <FormControl variant="outlined" sx={{width: 400, mt: 2, mx: 'auto'}}>
-              <TextField
-                id="exp"
-                inputRef={expRef}
-                onChange={expChangeHandler}
-                label="Trabalho ou experiência profissional prévia? Fale sobre"
-                multiline
-                rows={4}
-                defaultValue=""
-              />
-            </FormControl>
+                </Typography>
+              </Grid>
+              <Grid item xs={12} sm={12} md={6}>
+                <FormControl variant="outlined" sx={{width: 1, mt: 2, mx: 'auto'}}>
+                  <TextField
+                    id="trab"
+                    inputRef={trabRef}
+                    onChange={trabChangeHandler}
+                    label="Você trabalha ou faz estágio atualmente? Fale sobre"
+                    multiline
+                    rows={4}
+                    defaultValue=""
+                  />
+                </FormControl>
+              </Grid>
+              <Grid item xs={12} sm={12} md={6}>
+                <FormControl variant="outlined" sx={{width: 1, mt: 2, mx: 'auto'}}>
+                  <TextField
+                    id="exp"
+                    inputRef={expRef}
+                    onChange={expChangeHandler}
+                    label="Trabalho ou experiência profissional prévia? Fale sobre"
+                    multiline
+                    rows={4}
+                    defaultValue=""
+                  />
+                </FormControl>
+              </Grid>
+            </Grid>
+            <Grid container spacing={1} direction="row" justifyContent="left" alignItems="center">
+              <Grid item xs={12} sm={12} md={12}>
             <Typography sx={{align : 'justify', mt : 3, mb : 3 }} variant="h5">
               Passo 4 : Habilidades e tecnologias
             </Typography>
+            </Grid>
+            <Grid item xs={12} sm={4} md={3}>	
             <FormControl variant="outlined" sx={{width: 1,  mx: 'auto'}}>
               <Typography htmlFor="idiomas">Quais desses idiomas você compreende?</Typography>
               <FormGroup row>
@@ -695,6 +729,8 @@ function App() {
         onChange={espanholChangeHandler}/>
               </FormGroup>
             </FormControl>
+            </Grid>
+            <Grid item xs={12} sm={4} md={3}>
             <FormControl variant="outlined" sx={{width: 1,  mx: 'auto'}}>
               <Typography htmlFor="tecnologias">Quais dessas tecnologias você domina?</Typography>
               <FormGroup row>
@@ -732,9 +768,9 @@ function App() {
         onChange={reactChangeHandler}/>
               </FormGroup>
             </FormControl>
-                        <Typography sx={{align : 'justify', mt : 3, mb : 3 }} variant="h5">
-            </Typography>
-            <FormControl variant="outlined" sx={{width: 400, mt: 2, mx: 'auto'}}>
+            </Grid>
+            <Grid item xs={12} sm={4} md={6}>
+            <FormControl variant="outlined" sx={{width: 1,  mx: 'auto'}}>
               <Typography htmlFor="gostaria">Em quais dessas áreas você tem interesse?</Typography>
               <FormGroup row>
                 <FormControlLabel control={<Checkbox sx={{
@@ -780,10 +816,16 @@ function App() {
         onChange={vendasChangeHandler}/>
               </FormGroup>
             </FormControl>
-            <Typography sx={{align : 'justify', mt : 3, mb : 3 }} variant="h5">
+            </Grid>
+            </Grid>
+            <Grid container spacing={1} direction="row" justifyContent="left" alignItems="center">
+              <Grid item xs={12} sm={12} md={12}>
+            <Typography sx={{align : 'justify', }} variant="h5">
               Passo 5 : Expectativas em relação à Pixel
             </Typography>
-            <FormControl variant="outlined" sx={{width: 400, mt: 2, mx: 'auto'}}>
+            </Grid>
+            <Grid item xs={12} sm={12} md={4}>
+            <FormControl variant="outlined" sx={{width: 1, mx: 'auto'}}>
               <TextField
                 id="atraiu"
                 label="O que te atraiu à Pixel?"
@@ -794,7 +836,9 @@ function App() {
                 onChange={atraiuChangeHandler}
               />
             </FormControl>
-            <FormControl variant="outlined" sx={{width: 400, mt: 2, mx: 'auto'}}>
+            </Grid>
+            <Grid item xs={12} sm={12} md={4}>
+            <FormControl variant="outlined" sx={{width: 1, mx: 'auto'}}>
               <TextField
                 id="expect"
                 label="O que você espera da Pixel?"
@@ -805,9 +849,9 @@ function App() {
                 onChange={expectChangeHandler}
               />
             </FormControl>
-                        <Typography sx={{align : 'justify', mt : 3, mb : 3 }} variant="h5">
-            </Typography>
-            <FormControl variant="outlined" sx={{width: 400, mt: 2, mx: 'auto'}}>
+            </Grid>
+            <Grid item xs={12} sm={12} md={4}>
+            <FormControl variant="outlined" sx={{width: 1, mx: 'auto'}}>
               <TextField
                 id="agregar"
                 label="O que você acha que pode agregar à Pixel?"
@@ -818,10 +862,14 @@ function App() {
                 onChange={agregarChangeHandler}
               />
             </FormControl>
-
+            </Grid>
+            <Grid item xs={12} sm={12} md={12}>
+            <Grid container spacing={1} padding={1} direction="row" justifyContent="center" alignItems="center">
             <FormControl id="diretorias" variant="outlined" sx={{width: 1,  mx: 'auto'}} >
               <FormGroup row>
+                <Grid item xs={12} sm={12} md={12}>
                 <Typography htmlFor="diretorias">Em quais diretorias da Pixel você tem interesse em atuar?</Typography>
+                </Grid>
                 <Tooltip title={descricoes.gi} arrow>
                 <FormControlLabel control={<Checkbox sx={{
           color: theme.palette.midnight.main,
@@ -884,10 +932,18 @@ function App() {
               </Tooltip>
               </FormGroup>
             </FormControl>
-              <Typography sx={{align : 'justify', mt : 3, mb : 3 }} variant="h5">
+            </Grid>
+            </Grid>
+            </Grid>
+            <Grid container spacing={1} direction="row" justifyContent="left" alignItems="center">
+              <Grid item xs={12} sm={12} md={12}>
+              <Typography sx={{align : 'justify', }} variant="h5">
                 Passo 6 : Conhecimento sobre a Pixel
               </Typography>
-              <FormControl id="conhecimentos" variant="outlined" sx={{width: 400, mt: 2, mx: 'auto'}}>
+              </Grid>
+              <Grid item xs={12} sm={12} md={12}>
+              <FormControl id="conhecimentos" variant="outlined" sx={{width: 1,  mx: 'auto'}}>
+              <Grid item xs={12} sm={12} md={12}>
                 <FormLabel component="legend">O trabalho na Pixel é remunerado?</FormLabel>
                 <RadioGroup row aria-label="remunera" name="remunera"
                 onChange={remuneraChangeHandler}>
@@ -895,6 +951,8 @@ function App() {
                   <FormControlLabel value="Não" control={<Radio />} label="Não" />
                   <FormControlLabel value="Somente quando desenvolvo" control={<Radio />} label="Somente quando desenvolvo" />
                 </RadioGroup>
+                </Grid>
+                <Grid item xs={12} sm={12} md={12}>
                 <FormLabel component="legend">Em qual horário pretendo estar nas reuniões remotas com a câmera e microfone ligados?</FormLabel>
                 <RadioGroup row aria-label="reuniao" name="reuniao"
                 onChange={reuniaoChangeHandler}>
@@ -902,6 +960,8 @@ function App() {
                   <FormControlLabel value="23:00" control={<Radio />} label="23:00" />
                   <FormControlLabel value="Assim que eu chegar em casa" control={<Radio />} label="Assim que eu chegar em casa" />
                 </RadioGroup>
+                </Grid>
+                <Grid item xs={12} sm={612} md={12}>
                 <FormLabel component="legend">Quantas horas semanais pretendo dedicar às atividades na Pixel?</FormLabel>
 
                 <RadioGroup row aria-label="oitohoras" name="oitohoras"
@@ -910,6 +970,8 @@ function App() {
                   <FormControlLabel value="Oito" control={<Radio />} label="Oito" />
                   <FormControlLabel value="Doze" control={<Radio />} label="Doze" />
                 </RadioGroup>
+                </Grid>
+                <Grid item xs={12} sm={12} md={12}>
                 <FormLabel component="legend">Qual dentre esses é um dos valores da Pixel?</FormLabel>
                 <RadioGroup row aria-label="inclusao" name="inclusao"
                 onChange={inclusaoChangeHandler}>
@@ -917,6 +979,8 @@ function App() {
                   <FormControlLabel value="Lucro" control={<Radio />} label="Lucro" />
                   <FormControlLabel value="Diversidade" control={<Radio />} label="Diversidade" />
                 </RadioGroup>
+                </Grid>
+                <Grid item xs={12} sm={12} md={12}>
                 <FormLabel component="legend">Como pretendo me capacitar na Pixel?</FormLabel>
                 <RadioGroup row aria-label="trilhas" name="trilhas"
                 onChange={trilhasChangeHandler}>
@@ -924,17 +988,26 @@ function App() {
                   <FormControlLabel value="De maneira proativa, estudando" control={<Radio />} label="De maneira proativa, estudando" />
                   <FormControlLabel value="Nas aulas síncronas ministradas pelos membros da Pixel aos sábados à noite" control={<Radio />} label="Nas aulas síncronas ministradas pelos membros da Pixel aos sábados à noite" />
                 </RadioGroup>
+                </Grid>
               </FormControl>
-              <Typography sx={{align : 'justify', mt : 3, mb : 3 }} variant="h5">
+              </Grid>
+              </Grid>
+              <Grid container spacing={1} direction="row" justifyContent="left" alignItems="center">
+                <Grid item xs={12} sm={12} md={12}>
+              <Typography sx={{align : 'justify' }} variant="h5">
                 Passo 7 : Informações de contato
               </Typography>
-              <FormControl variant="outlined" sx={{width: 400, mt: 2, mx: 'auto'}}>
+              </Grid>
+              <Grid item xs={12} sm={6} md={3}>
+              <FormControl variant="outlined" sx={{width: 1, mx: 'auto'}}>
                 <InputLabel htmlFor="email"></InputLabel>
                 <TextField id="email" inputRef={emailRef}
                 onChange={emailChangeHandler}
                 label="E-mail" variant="outlined" />
               </FormControl>
-              <FormControl variant="outlined" sx={{width: 400, mt: 2, mx: 'auto'}}>
+              </Grid>
+              <Grid item xs={12} sm={6} md={3}>
+              <FormControl variant="outlined" sx={{width: 1,  mx: 'auto'}}>
                 <InputLabel htmlFor="whatsapp"></InputLabel>
                 <TextField
                 {...(erroWhatsapp ? {error: true, helperText: erroWhatsapp} : {}) }
@@ -942,34 +1015,50 @@ function App() {
                 onChange={whatsappChangeHandler}
                 label="WhatsApp" variant="outlined" />
               </FormControl>
-              <Typography sx={{align : 'justify', mt : 3, mb : 3 }} variant="h5"/>
-              <FormControl variant="outlined" sx={{width: 400, mt: 2, mx: 'auto'}}>
+              </Grid>
+              <Grid item xs={12} sm={6} md={3}>
+              <FormControl variant="outlined" sx={{width: 1, mx: 'auto'}}>
                 <InputLabel htmlFor="linkedin"></InputLabel>
                 <TextField id="linkedin" inputRef={linkedinRef}
                 onChange={linkedinChangeHandler}
                 label="LinkedIn" variant="outlined" />
               </FormControl>
-              <FormControl variant="outlined" sx={{width: 400, mt: 2, mx: 'auto'}}>
+              </Grid>
+              <Grid item xs={12} sm={6} md={3}>
+              <FormControl variant="outlined" sx={{width: 1,  mx: 'auto'}}>
                 <InputLabel htmlFor="github"></InputLabel>
                 <TextField id="github" inputRef={githubRef}
                 onChange={githubChangeHandler}
                 label="GitHub" variant="outlined" />
               </FormControl>
-              <Typography sx={{align : 'justify', mt : 3, mb : 3 }} variant="h5"/>
+              </Grid>
+              </Grid>
+              <Grid container padding={1} spacing={1} direction="column" justifyContent="center" alignItems="center">
+              <Grid item xs={12} sm={6} md={6}>
+              <Typography sx={{align : 'justify', }} variant="h5"/>
               <ReCaptcha
               sitekey="6LefiZwpAAAAACAPYBupkycHvuK3j-Y7016LVZ9g"
               onChange={geraTokenRecaptcha}  
-              />
-              <Button variant="contained" endIcon={<SendIcon />} sx={{width: 400, mt: 3, mx: 'auto', backgroundColor: theme.palette.midnight.main, color: theme.palette.sunrise.main,}} 
+              /> </Grid>
+              <Grid item xs={12} sm={6} md={6}>
+              <Button variant="contained" endIcon={<SendIcon />} sx={{width: 1, mx: 'auto', backgroundColor: theme.palette.midnight.main, color: theme.palette.sunrise.main,}} 
               onClick={enviarHandler}
               >Enviar</Button>
-            </Box>
-          </div>
+              </Grid>
+              </Grid>
+            </Grid>
+          
+          </Grid>
         </CardContent>
       </Card>
+      <Grid container spacing={1} direction="column" justifyContent="center" alignItems="center">
+      <Grid item xs={12} sm={12} md={12}>
             <Typography sx={{ mt : 3, mb : 3, color : theme.palette.sunrise.main }} variant="p">Aplicação desenvolvida em <Link href="https://react.dev/" underline="none" color="#1CACD8">React</Link>, na stack <Link href="https://www.mongodb.com/mern-stack" underline="none" color="#1CACD8">MERN</Link>, por Rudolfo Lange Neto, diretor executivo de Desenvolvimento Humano e Organizacional na Pixel</Typography> 
+      </Grid>
+      </Grid>
+      </Grid>
+      </Grid>
       </div>
-    </div>
     </ThemeProvider>
   )
 }
