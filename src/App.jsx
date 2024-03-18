@@ -606,6 +606,7 @@ function App() {
         handleOpen();
         break;
       default:
+        setToken(false);
         api.post('/', respostas)
         .then(() => {
           setErrorTitulo('Sucesso');
