@@ -682,7 +682,7 @@ function App() {
               </Select>
             </FormControl>
             </Grid>
-            <Grid item xs={12} sm={6} md={4}>
+            <Grid item xs={12} sm={8} md={4}>
             <FormControl variant="outlined" sx={{width: 1, mt: 2, mx: 'auto'}}>
               <InputLabel id="label-raca">Com qual grupo étnico você se identifica?*</InputLabel>
               <Select
