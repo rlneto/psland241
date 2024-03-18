@@ -9,6 +9,7 @@ import { styled } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
+import CircularProgress from '@mui/material/CircularProgress';
 import FormControl from '@mui/material/FormControl';
 import FormGroup from '@mui/material/FormGroup';
 import FormLabel from '@mui/material/FormLabel';
@@ -211,6 +212,8 @@ function App() {
 
   const [errorMessage, setErrorMessage] = useState('');
 
+  const [loading, setLoading] = useState(false);
+
   const style = {
     position: 'absolute',
     top: '50%',
@@ -228,7 +231,7 @@ function App() {
     console.log(respostas);
   }
   , [respostas]);
-  const [token, setToken] = useState('');
+  const [token, setToken] = useState(false);
 
   const geraTokenRecaptcha = (tokenrc) => {
     setToken(tokenrc);
@@ -541,68 +544,81 @@ function App() {
 
 
   const enviarHandler = () => {
+    setLoading(true);
     switch (true){
       case (respostas.nome === ''):
         setErrorTitulo('Erro');
         setErrorMessage('O campo Nome é obrigatório');
         handleOpen();
+        setLoading(false);
         break;
       case (respostas.genero === ''):
         setErrorTitulo('Erro');
         setErrorMessage('O campo Gênero é obrigatório');
         handleOpen();
+        setLoading(false);
         break;
         case (respostas.raca === ''):
         setErrorTitulo('Erro');
         setErrorMessage('O campo Etnia é obrigatório');
         handleOpen();
+        setLoading(false);
         break;
       case (respostas.curso === ''):
         setErrorTitulo('Erro');
         setErrorMessage('O campo Curso é obrigatório');
         handleOpen();
+        setLoading(false);
         break;
       case (respostas.matricula === ''):
         setErrorTitulo('Erro');
         setErrorMessage('O campo Matrícula é obrigatório');
         handleOpen();
+        setLoading(false);
         break;
       case (respostas.remunera || respostas.reuniao || respostas.oitohoras || respostas.inclusao || respostas.trilhas === ''):
         setErrorTitulo('Erro');
         setErrorMessage('Os campos sobre o conhecimento da Pixel são todos obrigatórios');
         handleOpen();
+        setLoading(false);
         break;
       case (respostas.email === ''):
         setErrorTitulo('Erro');
         setErrorMessage('O campo Email é obrigatório');
         handleOpen();
+        setLoading(false);
         break;
         case (respostas.whatsapp === ''):
         setErrorTitulo('Erro');
         setErrorMessage('O campo Whatsapp é obrigatório');
         handleOpen();
+        setLoading(false);
         break;
       case (respostas.whatsapp.length < 9):
         setErrorTitulo('Erro');
         setErrorMessage('O campo Whatsapp deve conter um número de telefone válido');
         handleOpen();
+        setLoading(false);
         break;
-      // case (token === ''):
-      //   setErrorTitulo('Erro');
-      //   setErrorMessage('Por favor, complete o reCAPTCHA');
-      //   handleOpen();
-      //   break;
+      case (token === ''):
+        setErrorTitulo('Erro');
+        setErrorMessage('Por favor, complete o reCAPTCHA');
+        handleOpen();
+        break;
       default:
         api.post('/', respostas)
         .then(() => {
           setErrorTitulo('Sucesso');
-          setErrorMessage('Formulário enviado com sucesso! Aguarde o resultado no e-mail informado.');
+          setErrorMessage('Inscrição feita com sucesso! Aguarde o resultado no e-mail informado.');
+          handleOpen();
+          setLoading(false);
         })
         .catch((error) => {
           setErrorTitulo('Erro');
           setErrorMessage(`Erro ao enviar os dados!`);
           console.log(error);
           handleOpen();
+          setLoading(false);
         });
 
     }
@@ -1144,11 +1160,10 @@ function App() {
               onChange={geraTokenRecaptcha}  
               /> </Grid>
               <Grid item xs={12} sm={6} md={6}>
-                {/* disabled={ !token && !preenchidos }  */}
-              <Button 
+              <Button disabled={loading || !preenchidos }
               variant="contained" endIcon={<SendIcon />} sx={{width: 1, mx: 'auto', backgroundColor: theme.palette.midnight.main, color: theme.palette.sunrise.main,}} 
               onClick={enviarHandler}
-              >Enviar</Button>
+              >{loading ? <CircularProgress size={24} /> : 'Enviar'}</Button>
               </Grid>
               </Grid>
             </Grid>
