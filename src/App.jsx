@@ -228,10 +228,6 @@ function App() {
   };
 
 
-  // useEffect(() => {
-  //   console.log(respostas);
-  // }
-  // , [respostas]);
 
   const [token, setToken] = useState(null);
 
@@ -1158,7 +1154,7 @@ function App() {
               onChange={geraTokenRecaptcha}  
               /> </Grid>
               <Grid item xs={12} sm={6} md={6}>
-              <Button disabled={loading || !preenchidos || sucesso}
+              <Button disabled={loading || !preenchidos || sucesso || !token}
               variant="contained" endIcon={<SendIcon />} sx={{width: 1, mx: 'auto', backgroundColor: theme.palette.midnight.main, color: theme.palette.sunrise.main,}} 
               onClick={enviarHandler}
               >{loading ? <CircularProgress size={24} /> : 'Enviar'}</Button>
