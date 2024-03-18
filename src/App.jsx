@@ -1166,7 +1166,7 @@ function App() {
       </Card>
       <Grid container spacing={1} direction="column" justifyContent="center" alignItems="center">
       <Grid item xs={12} sm={12} md={12}>
-            <Typography sx={{ mt : 3, mb : 3, color : theme.palette.sunrise.main }} variant="p">Aplicação desenvolvida em <Link href="https://react.dev/" underline="none" color="#1CACD8">React</Link>, na stack <Link href="https://www.mongodb.com/mern-stack" underline="none" color="#1CACD8">MERN</Link>, por Rudolfo Lange Neto, diretor executivo de Desenvolvimento Humano e Organizacional na Pixel</Typography> 
+            <Typography sx={{ mt : 3, mb : 3, color : theme.palette.sunrise.main }} variant="p">Aplicação desenvolvida em <Link href="https://react.dev/" underline="none" color="#1CACD8">React</Link>, na stack <Link href="https://www.mongodb.com/mern-stack" underline="none" color="#1CACD8">MERN</Link>, por Rudolfo Lange Neto, Diretor Executivo de Desenvolvimento Humano e Organizacional na Pixel</Typography> 
       </Grid>
       </Grid>
       </Grid>
