@@ -26,7 +26,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Axios from 'axios';
 import shared from './styles/Shared.module.css'
 import ReCaptcha from 'react-google-recaptcha';
-import { Form } from 'react-router-dom';
+import Logo from './components/Logo';
 
 const api = Axios.create({
   baseURL: 'https://psbackend-pelc.onrender.com/api/v1/register/',
@@ -134,8 +134,6 @@ const racas = [
 
 function App() {
   const nomeRef = useRef(null);
-  const racaRef = useRef(null);
-  const cursoRef = useRef(null);
   const matriculaRef = useRef(null);
   const faseRef = useRef(null);
   const horasRef = useRef(null);
@@ -525,11 +523,7 @@ function App() {
       <div className={`${shared.alignCenter} ${shared.marginTop} ${shared.padding20}`}>
       <Card sx={{width : 1, p : 0.3, mx : 'auto', align : 'center', boxShadow : 3}}>
         <CardContent>
-          <Box component="img"
-          sx={{display: 'flex', align : 'center', justifyContent : 'center', mx: 'auto', my: 1,}}
-          alt="Logo da Pixel"
-          src="/src/assets/horizontal.svg">
-          </Box>
+            <Logo />
           <div className= {`${shared.marginTop} ${shared.alignCenter}`}>
             <Typography sx={{align : 'justify', mx : 'auto' }} variant="h5">
               Boas-vindas à primeira etapa do processo 24.1 de recrutamento da Pixel!
