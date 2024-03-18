@@ -18,6 +18,7 @@ import RadioGroup from '@mui/material/RadioGroup';
 import SendIcon from '@mui/icons-material/Send';
 import Tooltip from '@mui/material/Tooltip';
 import FormControlLabel from '@mui/material/FormControlLabel';
+import Modal from '@mui/material/Modal';
 import Checkbox from '@mui/material/Checkbox';
 import TextField from '@mui/material/TextField';
 import InputLabel from '@mui/material/InputLabel';
@@ -28,6 +29,7 @@ import Axios from 'axios';
 import shared from './styles/Shared.module.css'
 import ReCaptcha from 'react-google-recaptcha';
 import Logo from './components/Logo';
+import { set } from 'mongoose';
 
 const api = Axios.create({
   baseURL: 'https://psbackend-pelc.onrender.com/api/v1/register/',
@@ -204,6 +206,23 @@ function App() {
   const [erroMatricula, setErroMatricula] = useState('');
 
   const [erroWhatsapp, setErroWhatsapp] = useState('');
+
+  const [errorTitulo, setErrorTitulo] = useState('');
+
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 400,
+    bgcolor: 'background.paper',
+    border: '2px solid #000',
+    boxShadow: 24,
+    p: 4,
+  };
+
 
   useEffect(() => {
     console.log(respostas);
@@ -505,16 +524,100 @@ function App() {
     setRespostas({...respostas, github: githubRef.current.value});
   }
 
+  // const enviarHandler = () => {
+  //   console.log('Enviando');
+  //   api.post('/', respostas)
+  //   .then((response) => {
+  //     console.log(response);
+  //   })
+  //   .catch((error) => {
+  //     console.log(error);
+  //   });
+  // }
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
+
+
   const enviarHandler = () => {
-    console.log('Enviando');
-    api.post('/', respostas)
-    .then((response) => {
-      console.log(response);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+    switch (true){
+      case (respostas.nome === ''):
+        setErrorTitulo('Erro');
+        setErrorMessage('O campo Nome é obrigatório');
+        handleOpen();
+        break;
+      case (respostas.genero === ''):
+        setErrorTitulo('Erro');
+        setErrorMessage('O campo Gênero é obrigatório');
+        handleOpen();
+        break;
+        case (respostas.raca === ''):
+        setErrorTitulo('Erro');
+        setErrorMessage('O campo Etnia é obrigatório');
+        handleOpen();
+        break;
+      case (respostas.curso === ''):
+        setErrorTitulo('Erro');
+        setErrorMessage('O campo Curso é obrigatório');
+        handleOpen();
+        break;
+      case (respostas.matricula === ''):
+        setErrorTitulo('Erro');
+        setErrorMessage('O campo Matrícula é obrigatório');
+        handleOpen();
+        break;
+      case (respostas.remunera || respostas.reuniao || respostas.oitohoras || respostas.inclusao || respostas.trilhas === ''):
+        setErrorTitulo('Erro');
+        setErrorMessage('Os campos sobre o conhecimento da Pixel são todos obrigatórios');
+        handleOpen();
+        break;
+      case (respostas.email === ''):
+        setErrorTitulo('Erro');
+        setErrorMessage('O campo Email é obrigatório');
+        handleOpen();
+        break;
+        case (respostas.whatsapp === ''):
+        setErrorTitulo('Erro');
+        setErrorMessage('O campo Whatsapp é obrigatório');
+        handleOpen();
+        break;
+      case (respostas.whatsapp.length < 9):
+        setErrorTitulo('Erro');
+        setErrorMessage('O campo Whatsapp deve conter um número de telefone válido');
+        handleOpen();
+        break;
+      // case (token === ''):
+      //   setErrorTitulo('Erro');
+      //   setErrorMessage('Por favor, complete o reCAPTCHA');
+      //   handleOpen();
+      //   break;
+      default:
+        api.post('/', respostas)
+        .then(() => {
+          setErrorTitulo('Sucesso');
+          setErrorMessage('Formulário enviado com sucesso! Aguarde o resultado no e-mail informado.');
+        })
+        .catch((error) => {
+          setErrorTitulo('Erro');
+          setErrorMessage(`Erro ao enviar os dados!`);
+          console.log(error);
+          handleOpen();
+        });
+
+    }
   }
+  const [preenchidos, setPreenchidos] = useState(false);
+
+  useEffect(() => {
+    if (respostas.nome !== '' && respostas.genero !== '' && respostas.raca !== '' && respostas.curso !== '' && respostas.matricula !== '' && respostas.remunera !== '' && respostas.reuniao !== '' && respostas.oitohoras !== '' && respostas.inclusao !== '' && respostas.trilhas !== '' && respostas.email !== '' && respostas.whatsapp !== '') {
+      setPreenchidos(true);
+    }
+    else {
+      setPreenchidos(false);
+    }
+  }
+  , [respostas]);
 
 
   return (
@@ -985,7 +1088,7 @@ function App() {
                 <RadioGroup row aria-label="trilhas" name="trilhas"
                 onChange={trilhasChangeHandler}>
                   <FormControlLabel value="Já tenho capacitação" control={<Radio />} label="Já tenho capacitação" />
-                  <FormControlLabel value="Estudando por conta própria" control={<Radio />} label="De maneira proativa, estudando" />
+                  <FormControlLabel value="Estudando por conta própria" control={<Radio />} label="Estudando por conta própria" />
                   <FormControlLabel value="Nas aulas síncronas ministradas pelos membros da Pixel aos sábados à noite" control={<Radio />} label="Nas aulas síncronas ministradas pelos membros da Pixel aos sábados à noite" />
                 </RadioGroup>
                 </Grid>
@@ -1041,7 +1144,9 @@ function App() {
               onChange={geraTokenRecaptcha}  
               /> </Grid>
               <Grid item xs={12} sm={6} md={6}>
-              <Button variant="contained" endIcon={<SendIcon />} sx={{width: 1, mx: 'auto', backgroundColor: theme.palette.midnight.main, color: theme.palette.sunrise.main,}} 
+                {/* disabled={ !token && !preenchidos }  */}
+              <Button 
+              variant="contained" endIcon={<SendIcon />} sx={{width: 1, mx: 'auto', backgroundColor: theme.palette.midnight.main, color: theme.palette.sunrise.main,}} 
               onClick={enviarHandler}
               >Enviar</Button>
               </Grid>
@@ -1058,6 +1163,16 @@ function App() {
       </Grid>
       </Grid>
       </Grid>
+      <Modal open={open} onClose={handleClose} aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
+        <Box sx={style}>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            {errorTitulo}
+          </Typography>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+            {errorMessage}
+          </Typography>
+        </Box>
+      </Modal>
       </div>
     </ThemeProvider>
   )
