@@ -213,6 +213,7 @@ function App() {
 
   const [loading, setLoading] = useState(false);
 
+
   const style = {
     position: 'absolute',
     top: '50%',
@@ -609,8 +610,9 @@ function App() {
         setToken(false);
         api.post('/', respostas)
         .then(() => {
-          setErrorTitulo('Sucesso');
+          setErrorTitulo('Sucesso!');
           setErrorMessage('Inscrição feita com sucesso! Aguarde o resultado no e-mail informado.');
+          setRespostas(respostas_padrao);
           handleOpen();
           setLoading(false);
         })
