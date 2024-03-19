@@ -30,6 +30,7 @@ import Axios from 'axios';
 import shared from './styles/Shared.module.css'
 import ReCaptcha from 'react-google-recaptcha';
 import Logo from './components/Logo';
+import { Form } from 'react-router-dom';
 
 const api = Axios.create({
   baseURL: 'https://psbackend-pelc.onrender.com/api/v1/register/',
@@ -145,10 +146,12 @@ function App() {
   const inglesRef = useRef(null);
   const mandarimRef = useRef(null);
   const espanholRef = useRef(null);
-  const pythonRef = useRef(null);
   const javascriptRef = useRef(null);
   const nodejsRef = useRef(null);
   const reactRef = useRef(null);
+  const wordpressRef = useRef(null);
+  const nextjsRef = useRef(null);
+  const cssRef = useRef(null);
   const frontendRef = useRef(null);
   const backendRef = useRef(null);
   const gestaoRef = useRef(null);
@@ -313,16 +316,6 @@ function App() {
   }
 
 
-  const pythonChangeHandler = () => {
-    pythonRef.current.value = 'Python';
-    if (respostas.tecnologias.includes(pythonRef.current.value)) {
-      setRespostas({...respostas, tecnologias: respostas.tecnologias.filter((item) => item !== pythonRef.current.value)});
-    }
-    else {
-      setRespostas({...respostas, tecnologias: [...respostas.tecnologias, pythonRef.current.value]});
-    }
-  }
-  
   const javascriptChangeHandler = () => {
     javascriptRef.current.value = 'JavaScript';
     if (respostas.tecnologias.includes(javascriptRef.current.value)) {
@@ -352,6 +345,38 @@ function App() {
       setRespostas({...respostas, tecnologias: [...respostas.tecnologias, reactRef.current.value]});
     }
   }
+
+  const wordpressChangeHandler = () => {
+    wordpressRef.current.value = 'WordPress';
+    if (respostas.tecnologias.includes(wordpressRef.current.value)) {
+      setRespostas({...respostas, tecnologias: respostas.tecnologias.filter((item) => item !== wordpressRef.current.value)});
+    }
+    else {
+      setRespostas({...respostas, tecnologias: [...respostas.tecnologias, wordpressRef.current.value]});
+    }
+  }
+
+  const nextjsChangeHandler = () => {
+    nextjsRef.current.value = 'Next.js';
+    if (respostas.tecnologias.includes(nextjsRef.current.value)) {
+      setRespostas({...respostas, tecnologias: respostas.tecnologias.filter((item) => item !== nextjsRef.current.value)});
+    }
+    else {
+      setRespostas({...respostas, tecnologias: [...respostas.tecnologias, nextjsRef.current.value]});
+    }
+  }
+
+  const cssChangeHandler = () => {
+    cssRef.current.value = 'CSS';
+    if (respostas.tecnologias.includes(cssRef.current.value)) {
+      setRespostas({...respostas, tecnologias: respostas.tecnologias.filter((item) => item !== cssRef.current.value)});
+    }
+    else {
+      setRespostas({...respostas, tecnologias: [...respostas.tecnologias, cssRef.current.value]});
+    }
+  }
+
+
 
   const frontendChangeHandler = () => {
     frontendRef.current.value = 'Front-end';
@@ -633,7 +658,7 @@ function App() {
       <CssBaseline />
       <div className={`${shared.backgroundStyle}`}>
       <Grid container spacing={1} direction="column" justifyContent="center" alignItems="center">
-        <Grid item xs={12} sm={12} md={12} style={{ margin: '20px' }}>
+        <Grid item xs={12} sm={12} md={12} style={{ marginTop: '20px' }}>
       <Card sx={{width : 0.95, maxWidth : "1200px", height: 0.9, p : 0.1, mx : 'auto', align : 'center', boxShadow : 3}}>
         <CardContent>
           <Grid container spacing={1} direction="column" justifyContent="center" alignItems="center">
@@ -841,18 +866,10 @@ function App() {
               </FormGroup>
             </FormControl>
             </Grid>
-            <Grid item xs={12} sm={4} md={3}>
+            <Grid item xs={12} sm={4} md={4}>
             <FormControl variant="outlined" sx={{width: 1,  mx: 'auto'}}>
               <Typography htmlFor="tecnologias">Quais dessas tecnologias você domina?</Typography>
               <FormGroup row>
-                <FormControlLabel control={<Checkbox sx={{
-          color: theme.palette.midnight.main,
-          '&.Mui-checked': {
-            color: theme.palette.spacecadet.main,
-          },
-        }} />} label="Python"
-        inputRef={pythonRef}
-        onChange={pythonChangeHandler}/>
         <FormControlLabel control={<Checkbox sx={{
           color: theme.palette.midnight.main,
           '&.Mui-checked': {
@@ -877,10 +894,35 @@ function App() {
         }} />} label="React"
         inputRef={reactRef}
         onChange={reactChangeHandler}/>
+        <FormControlLabel control={<Checkbox sx={{
+          color: theme.palette.midnight.main,
+          '&.Mui-checked': {
+            color: theme.palette.spacecadet.main,
+          },
+          }} />} label="Wordpress"
+          inputRef={wordpressRef}
+          onChange={wordpressChangeHandler}/>
+          <FormControlLabel control={<Checkbox sx={{
+          color: theme.palette.midnight.main,
+          '&.Mui-checked': {
+            color: theme.palette.spacecadet.main,
+          },
+          }} />} label="Next.js"
+          inputRef={nextjsRef}
+          onChange={nextjsChangeHandler}/>
+          <FormControlLabel control={<Checkbox sx={{
+          color: theme.palette.midnight.main,
+          '&.Mui-checked': {
+            color: theme.palette.spacecadet.main,
+          },
+          }} />} label="CSS"
+          inputRef={cssRef}
+          onChange={cssChangeHandler}/>
+
               </FormGroup>
             </FormControl>
             </Grid>
-            <Grid item xs={12} sm={4} md={6}>
+            <Grid item xs={12} sm={4} md={5}>
             <FormControl variant="outlined" sx={{width: 1,  mx: 'auto'}}>
               <Typography htmlFor="gostaria">Em quais dessas áreas você tem interesse?</Typography>
               <FormGroup row>
@@ -1046,15 +1088,15 @@ function App() {
             </Grid>
             </Grid>
             </Grid>
-            <Grid container spacing={1} direction="row" justifyContent="left" alignItems="center">
+            <Grid container spacing={1} direction="row" justifyContent="left" alignItems="center" >
               <Grid item xs={12} sm={12} md={12}>
               <Typography sx={{align : 'justify', }} variant="h5">
-                Passo 6 : Conhecimento sobre a Pixel
+                Passo 6 : Conhecimento sobre a Pixel*
               </Typography>
               </Grid>
               <Grid item xs={12} sm={12} md={12}>
               <FormControl id="conhecimentos" variant="outlined" sx={{width: 1,  mx: 'auto'}}>
-              <Grid item xs={12} sm={12} md={12}>
+              <Grid item xs={12} sm={12} md={12} sx={{mb : 2}}>
                 <FormLabel component="legend">O trabalho na Pixel é remunerado?</FormLabel>
                 <RadioGroup row aria-label="remunera" name="remunera"
                 onChange={remuneraChangeHandler}>
@@ -1063,7 +1105,7 @@ function App() {
                   <FormControlLabel value="Somente quando desenvolvo" control={<Radio />} label="Somente quando desenvolvo" />
                 </RadioGroup>
                 </Grid>
-                <Grid item xs={12} sm={12} md={12}>
+                <Grid item xs={12} sm={12} md={12} sx={{mb : 2}}>
                 <FormLabel component="legend">Em qual horário pretende estar nas reuniões remotas com a câmera e microfone ligados?</FormLabel>
                 <RadioGroup row aria-label="reuniao" name="reuniao"
                 onChange={reuniaoChangeHandler}>
@@ -1072,7 +1114,7 @@ function App() {
                   <FormControlLabel value="Assim que chegar em casa" control={<Radio />} label="Assim que chegar em casa" />
                 </RadioGroup>
                 </Grid>
-                <Grid item xs={12} sm={612} md={12}>
+                <Grid item xs={12} sm={612} md={12} sx={{mb : 2}}>
                 <FormLabel component="legend">Quantas horas semanais pretende dedicar às atividades na Pixel?</FormLabel>
 
                 <RadioGroup row aria-label="oitohoras" name="oitohoras"
@@ -1082,7 +1124,7 @@ function App() {
                   <FormControlLabel value="Doze" control={<Radio />} label="Doze" />
                 </RadioGroup>
                 </Grid>
-                <Grid item xs={12} sm={12} md={12}>
+                <Grid item xs={12} sm={12} md={12} sx={{mb : 2}}>
                 <FormLabel component="legend">Qual dentre esses é um dos valores da Pixel?</FormLabel>
                 <RadioGroup row aria-label="inclusao" name="inclusao"
                 onChange={inclusaoChangeHandler}>
@@ -1091,7 +1133,7 @@ function App() {
                   <FormControlLabel value="Diversidade" control={<Radio />} label="Diversidade" />
                 </RadioGroup>
                 </Grid>
-                <Grid item xs={12} sm={12} md={12}>
+                <Grid item xs={12} sm={12} md={12} sx={{mb : 2}}>
                 <FormLabel component="legend">Como pretende capacitar-se na Pixel?</FormLabel>
                 <RadioGroup row aria-label="trilhas" name="trilhas"
                 onChange={trilhasChangeHandler}>
@@ -1112,7 +1154,7 @@ function App() {
               <Grid item xs={12} sm={6} md={3}>
               <FormControl variant="outlined" sx={{width: 1, mx: 'auto'}}>
                 <InputLabel htmlFor="email"></InputLabel>
-                <TextField id="email" inputRef={emailRef}
+                <TextField required id="email" inputRef={emailRef}
                 onChange={emailChangeHandler}
                 label="E-mail" variant="outlined" />
               </FormControl>
@@ -1120,7 +1162,7 @@ function App() {
               <Grid item xs={12} sm={6} md={3}>
               <FormControl variant="outlined" sx={{width: 1,  mx: 'auto'}}>
                 <InputLabel htmlFor="whatsapp"></InputLabel>
-                <TextField
+                <TextField required
                 {...(erroWhatsapp ? {error: true, helperText: erroWhatsapp} : {}) }
                 id="whatsapp" inputRef={whatsappRef}
                 onChange={whatsappChangeHandler}
@@ -1158,6 +1200,9 @@ function App() {
               onClick={enviarHandler}
               >{loading ? <CircularProgress size={24} /> : 'Enviar'}</Button>
               </Grid>
+                <Grid item xs={12} sm={12} md={12}>
+                <Typography variant="p" sx={{ fontSize : '0.8rem' }}>Os campos com * são necessários</Typography> 
+                </Grid>
               </Grid>
             </Grid>
           
@@ -1176,7 +1221,7 @@ function App() {
           <Typography id="modal-modal-title" variant="h6" component="h2">
             {errorTitulo}
           </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+          <Typography id="modal-modal-description" >
             {errorMessage}
           </Typography>
         </Box>
