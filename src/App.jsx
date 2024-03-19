@@ -724,7 +724,7 @@ function App() {
             </FormControl>
             </Grid>
             </Grid>
-            <Grid container spacing={1} direction="row" justifyContent="left" alignItems="center">
+            <Grid container spacing={1} direction="row" justifyContent="left" alignItems="center" >
               <Grid item xs={12} sm={12} md={12}>
               <Typography sx={{align : 'justify', mt : 3, mb : 3 }} variant="h5">
                 Passo 2 : Informações Acadêmicas
@@ -797,7 +797,7 @@ function App() {
             </Grid>
             </Grid>
             <Grid container spacing={1} direction="row" justifyContent="left" alignItems="center">
-              <Grid item xs={12} sm={12} md={12}>
+              <Grid item xs={12} sm={12} md={12} >
                 <Typography sx={{align : 'justify', mt : 3, mb : 3 }} variant="h5">
               Passo 3 : Informações Profissionais
                 </Typography>
@@ -829,9 +829,9 @@ function App() {
                 </FormControl>
               </Grid>
             </Grid>
-            <Grid container spacing={1} direction="row" justifyContent="left" alignItems="center">
+            <Grid container spacing={1} direction="row" justifyContent="left" alignItems="center" sx={{mt : 2}}>
               <Grid item xs={12} sm={12} md={12}>
-            <Typography sx={{align : 'justify', mt : 3, mb : 3 }} variant="h5">
+            <Typography sx={{align : 'justify', mt : 3, mb : 3 }} variant="h5" >
               Passo 4 : Habilidades e tecnologias
             </Typography>
             </Grid>
@@ -971,9 +971,9 @@ function App() {
             </FormControl>
             </Grid>
             </Grid>
-            <Grid container spacing={1} direction="row" justifyContent="left" alignItems="center">
+            <Grid container spacing={1} direction="row" justifyContent="left" alignItems="center" sx={{mt : 2}}>
               <Grid item xs={12} sm={12} md={12}>
-            <Typography sx={{align : 'justify', }} variant="h5">
+            <Typography sx={{align : 'justify', mb : 2}} variant="h5">
               Passo 5 : Expectativas em relação à Pixel
             </Typography>
             </Grid>
@@ -1088,9 +1088,9 @@ function App() {
             </Grid>
             </Grid>
             </Grid>
-            <Grid container spacing={1} direction="row" justifyContent="left" alignItems="center" >
+            <Grid container spacing={1} direction="row" justifyContent="left" alignItems="center" sx={{mt : 2}}>
               <Grid item xs={12} sm={12} md={12}>
-              <Typography sx={{align : 'justify', }} variant="h5">
+              <Typography sx={{align : 'justify', mb : 2}} variant="h5">
                 Passo 6 : Conhecimento sobre a Pixel*
               </Typography>
               </Grid>
@@ -1145,9 +1145,9 @@ function App() {
               </FormControl>
               </Grid>
               </Grid>
-              <Grid container spacing={1} direction="row" justifyContent="left" alignItems="center">
+              <Grid container spacing={1} direction="row" justifyContent="left" alignItems="center" sx={{mt : 2}}>
                 <Grid item xs={12} sm={12} md={12}>
-              <Typography sx={{align : 'justify' }} variant="h5">
+              <Typography sx={{align : 'justify', mb : 2}} variant="h5" >
                 Passo 7 : Informações de contato
               </Typography>
               </Grid>
