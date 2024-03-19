@@ -1138,7 +1138,7 @@ function App() {
                 <RadioGroup row aria-label="trilhas" name="trilhas"
                 onChange={trilhasChangeHandler}>
                   <FormControlLabel value="Já tenho capacitação" control={<Radio />} label="Já tenho capacitação" />
-                  <FormControlLabel value="Estudando por conta própria" control={<Radio />} label="Estudando por conta própria" />
+                  <FormControlLabel value="Estudando" control={<Radio />} label="Estudando" />
                   <FormControlLabel value="Nas aulas síncronas ministradas pelos membros da Pixel aos sábados à noite" control={<Radio />} label="Nas aulas síncronas ministradas pelos membros da Pixel aos sábados à noite" />
                 </RadioGroup>
                 </Grid>
