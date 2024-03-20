@@ -875,14 +875,14 @@ function App() {
         }} />} label="Espanhol"
         inputRef={espanholRef}
         onChange={espanholChangeHandler}/>
-        <FormControlLabel control={<Checkbox sx={{
+ {/*        <FormControlLabel control={<Checkbox sx={{
           color: theme.palette.midnight.main,
           '&.Mui-checked': {
             color: theme.palette.spacecadet.main,
           },
         }} />} label="Outro"
         inputRef={outroRef}
-        onChange={outroChangeHandler}/>
+        onChange={outroChangeHandler}/> */}
               </FormGroup>
             </FormControl>
             </Grid>
