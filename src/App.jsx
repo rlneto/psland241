@@ -317,7 +317,7 @@ function App() {
     }
   }
 
-  const outroChangeHandler = () => {
+/*   const outroChangeHandler = () => {
     outroRef.current.value = 'Outro';
     if (respostas.idiomas.includes(outroRef.current.value)) {
       setRespostas({...respostas, idiomas: respostas.idiomas.filter((item) => item !== outroRef.current.value)});
@@ -325,7 +325,7 @@ function App() {
     else {
       setRespostas({...respostas, idiomas: [...respostas.idiomas, outroRef.current.value]});
     }
-  }
+  } */
 
   
 
