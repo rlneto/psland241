@@ -146,6 +146,7 @@ function App() {
   const inglesRef = useRef(null);
   const mandarimRef = useRef(null);
   const espanholRef = useRef(null);
+  const outroRef = useRef(null);
   const javascriptRef = useRef(null);
   const nodejsRef = useRef(null);
   const reactRef = useRef(null);
@@ -316,6 +317,17 @@ function App() {
     }
   }
 
+  const outroChangeHandler = () => {
+    outroRef.current.value = 'Outro';
+    if (respostas.idiomas.includes(outroRef.current.value)) {
+      setRespostas({...respostas, idiomas: respostas.idiomas.filter((item) => item !== outroRef.current.value)});
+    }
+    else {
+      setRespostas({...respostas, idiomas: [...respostas.idiomas, outroRef.current.value]});
+    }
+  }
+
+  
 
   const javascriptChangeHandler = () => {
     javascriptRef.current.value = 'JavaScript';
@@ -556,79 +568,6 @@ function App() {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const calculaScore = () => {
-    let soma = 0;
-    if (respostas.trab !== '') {
-      soma += 1;
-    }
-    if (respostas.exp !== '') {
-      soma += 1;
-    }
-    if (respostas.idiomas.length > 0) {
-      soma += 1;
-    }
-    if (respostas.tecnologias.length > 0) {
-      soma += Number(respostas.tecnologias.length);
-    }
-    if (respostas.interesse.length > 0) {
-      soma += Number(respostas.interesse.length);
-    }
-    if (respostas.atraiu.length > 0) {
-      soma += 1;
-    }
-    if (respostas.expect.length > 0) {
-      soma += 1;
-    }
-    if (respostas.agregar.length > 0) {
-      soma += 1;
-    }
-    if (respostas.diretorias.length > 0) {
-      soma += Number(respostas.diretorias.length);
-    }
-    if (respostas.remunera === 'Sim') {
-      soma -= 1;
-    } else if (respostas.remunera === 'Não') {
-      soma += 1;
-    } else if (respostas.remunera === 'Somente quando desenvolvo') {
-      soma -= 1;
-    }
-
-    if (respostas.reuniao === '22:30') {
-      soma += 1;
-    } else if (respostas.reuniao === '23:00') {
-      soma -= 1;
-    } else if (respostas.reuniao === 'Assim que eu chegar em casa') {
-      soma -= 1;
-    }
-
-    if (respostas.oitohoras === 'Quatro') {
-      soma -= 1;
-    } else {
-      soma += 1;
-    }
-
-    if (respostas.inclusao === 'Diversidade') {
-      soma += 1;
-    } else {
-      soma -= 1;
-    }
-
-    if (respostas.trilhas === 'Nas aulas síncronas ministradas pelos membros da Pixel aos sábados à noite ') {
-      soma += 1;
-    } else {
-      soma -= 1;
-    }
-
-    if (respostas.linkedin !== '') {
-      soma += 1;
-    }
-    if (respostas.github !== '') {
-      soma += 1;
-    }
-
-    setRespostas({...respostas, score: 10 + Number(soma) });
-    
-  }
 
   const enviarHandler = () => {
     setLoading(true);
@@ -694,7 +633,6 @@ function App() {
         break;
       default:
         setToken(false);
-        calculaScore();
         api.post('/', respostas)
         .then(() => {
           setErrorTitulo('Sucesso!');
@@ -937,6 +875,14 @@ function App() {
         }} />} label="Espanhol"
         inputRef={espanholRef}
         onChange={espanholChangeHandler}/>
+        <FormControlLabel control={<Checkbox sx={{
+          color: theme.palette.midnight.main,
+          '&.Mui-checked': {
+            color: theme.palette.spacecadet.main,
+          },
+        }} />} label="Outro"
+        inputRef={outroRef}
+        onChange={outroChangeHandler}/>
               </FormGroup>
             </FormControl>
             </Grid>
