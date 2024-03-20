@@ -30,7 +30,6 @@ import Axios from 'axios';
 import shared from './styles/Shared.module.css'
 import ReCaptcha from 'react-google-recaptcha';
 import Logo from './components/Logo';
-import { Form } from 'react-router-dom';
 
 const api = Axios.create({
   baseURL: 'https://psbackend-pelc.onrender.com/api/v1/register/',
@@ -146,7 +145,6 @@ function App() {
   const inglesRef = useRef(null);
   const mandarimRef = useRef(null);
   const espanholRef = useRef(null);
-  const outroRef = useRef(null);
   const javascriptRef = useRef(null);
   const nodejsRef = useRef(null);
   const reactRef = useRef(null);
@@ -875,14 +873,6 @@ function App() {
         }} />} label="Espanhol"
         inputRef={espanholRef}
         onChange={espanholChangeHandler}/>
- {/*        <FormControlLabel control={<Checkbox sx={{
-          color: theme.palette.midnight.main,
-          '&.Mui-checked': {
-            color: theme.palette.spacecadet.main,
-          },
-        }} />} label="Outro"
-        inputRef={outroRef}
-        onChange={outroChangeHandler}/> */}
               </FormGroup>
             </FormControl>
             </Grid>
