@@ -1213,6 +1213,10 @@ function App() {
                 <Grid item xs={12} sm={12} md={12}>
                 <Typography variant="p" sx={{ fontSize : '0.8rem' }}>Os campos com * são necessários</Typography> 
                 </Grid>
+                <Grid item xs={12} sm={12} md={12}>
+                  <Typography variant="p" sx={{ fontSize : '0.8rem' }}>Baixe o manual do processo clicando <Link target="_blank" rel="noopener" href="https://drive.google.com/file/d/1q6WTyjL2k8K-5fGSegZtbr4RwuzPGaqM/view?usp=sharing" underline="none" color="#1CACD8">aqui</Link>
+                  </Typography>
+                  </Grid>
               </Grid>
             </Grid>
           
