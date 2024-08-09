@@ -1,35 +1,34 @@
-import { useState, useEffect, useRef } from "react";
+import { ThemeProvider } from "@emotion/react";
+import SendIcon from "@mui/icons-material/Send";
+import { CssBaseline } from "@mui/material";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
-import Box from "@mui/material/Box";
-import { createTheme } from "@mui/material/styles";
-import { CssBaseline } from "@mui/material";
-import { ThemeProvider } from "@emotion/react";
-import { styled } from "@mui/material/styles";
-import Typography from "@mui/material/Typography";
-import Grid from "@mui/material/Grid";
-import Button from "@mui/material/Button";
+import Checkbox from "@mui/material/Checkbox";
 import CircularProgress from "@mui/material/CircularProgress";
 import FormControl from "@mui/material/FormControl";
+import FormControlLabel from "@mui/material/FormControlLabel";
 import FormGroup from "@mui/material/FormGroup";
 import FormLabel from "@mui/material/FormLabel";
-import Radio from "@mui/material/Radio";
-import Link from "@mui/material/Link";
-import RadioGroup from "@mui/material/RadioGroup";
-import SendIcon from "@mui/icons-material/Send";
-import Tooltip from "@mui/material/Tooltip";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Modal from "@mui/material/Modal";
-import Checkbox from "@mui/material/Checkbox";
-import TextField from "@mui/material/TextField";
+import Grid from "@mui/material/Grid";
 import InputLabel from "@mui/material/InputLabel";
-import Slider from "@mui/material/Slider";
-import Select from "@mui/material/Select";
+import Link from "@mui/material/Link";
 import MenuItem from "@mui/material/MenuItem";
+import Modal from "@mui/material/Modal";
+import Radio from "@mui/material/Radio";
+import RadioGroup from "@mui/material/RadioGroup";
+import Select from "@mui/material/Select";
+import Slider from "@mui/material/Slider";
+import TextField from "@mui/material/TextField";
+import Tooltip from "@mui/material/Tooltip";
+import Typography from "@mui/material/Typography";
+import { createTheme, styled } from "@mui/material/styles";
 import Axios from "axios";
-import shared from "./styles/Shared.module.css";
+import { useEffect, useRef, useState } from "react";
 import ReCaptcha from "react-google-recaptcha";
 import Logo from "./components/Logo";
+import shared from "./styles/Shared.module.css";
 
 const api = Axios.create({
 	baseURL: "https://psbackend-pelc.onrender.com/api/v1/register/",
@@ -288,7 +287,7 @@ function App() {
 			setRespostas({
 				...respostas,
 				idiomas: respostas.idiomas.filter(
-					(item) => item !== inglesRef.current.value
+					(item) => item !== inglesRef.current.value,
 				),
 			});
 		} else {
@@ -304,7 +303,7 @@ function App() {
 			setRespostas({
 				...respostas,
 				idiomas: respostas.idiomas.filter(
-					(item) => item !== mandarimRef.current.value
+					(item) => item !== mandarimRef.current.value,
 				),
 			});
 		} else {
@@ -320,7 +319,7 @@ function App() {
 			setRespostas({
 				...respostas,
 				idiomas: respostas.idiomas.filter(
-					(item) => item !== espanholRef.current.value
+					(item) => item !== espanholRef.current.value,
 				),
 			});
 		} else {
@@ -347,16 +346,13 @@ function App() {
 			setRespostas({
 				...respostas,
 				tecnologias: respostas.tecnologias.filter(
-					(item) => item !== javascriptRef.current.value
+					(item) => item !== javascriptRef.current.value,
 				),
 			});
 		} else {
 			setRespostas({
 				...respostas,
-				tecnologias: [
-					...respostas.tecnologias,
-					javascriptRef.current.value,
-				],
+				tecnologias: [...respostas.tecnologias, javascriptRef.current.value],
 			});
 		}
 	};
@@ -367,16 +363,13 @@ function App() {
 			setRespostas({
 				...respostas,
 				tecnologias: respostas.tecnologias.filter(
-					(item) => item !== nodejsRef.current.value
+					(item) => item !== nodejsRef.current.value,
 				),
 			});
 		} else {
 			setRespostas({
 				...respostas,
-				tecnologias: [
-					...respostas.tecnologias,
-					nodejsRef.current.value,
-				],
+				tecnologias: [...respostas.tecnologias, nodejsRef.current.value],
 			});
 		}
 	};
@@ -387,7 +380,7 @@ function App() {
 			setRespostas({
 				...respostas,
 				tecnologias: respostas.tecnologias.filter(
-					(item) => item !== reactRef.current.value
+					(item) => item !== reactRef.current.value,
 				),
 			});
 		} else {
@@ -404,16 +397,13 @@ function App() {
 			setRespostas({
 				...respostas,
 				tecnologias: respostas.tecnologias.filter(
-					(item) => item !== wordpressRef.current.value
+					(item) => item !== wordpressRef.current.value,
 				),
 			});
 		} else {
 			setRespostas({
 				...respostas,
-				tecnologias: [
-					...respostas.tecnologias,
-					wordpressRef.current.value,
-				],
+				tecnologias: [...respostas.tecnologias, wordpressRef.current.value],
 			});
 		}
 	};
@@ -424,16 +414,13 @@ function App() {
 			setRespostas({
 				...respostas,
 				tecnologias: respostas.tecnologias.filter(
-					(item) => item !== nextjsRef.current.value
+					(item) => item !== nextjsRef.current.value,
 				),
 			});
 		} else {
 			setRespostas({
 				...respostas,
-				tecnologias: [
-					...respostas.tecnologias,
-					nextjsRef.current.value,
-				],
+				tecnologias: [...respostas.tecnologias, nextjsRef.current.value],
 			});
 		}
 	};
@@ -444,7 +431,7 @@ function App() {
 			setRespostas({
 				...respostas,
 				tecnologias: respostas.tecnologias.filter(
-					(item) => item !== cssRef.current.value
+					(item) => item !== cssRef.current.value,
 				),
 			});
 		} else {
@@ -461,7 +448,7 @@ function App() {
 			setRespostas({
 				...respostas,
 				interesse: respostas.interesse.filter(
-					(item) => item !== frontendRef.current.value
+					(item) => item !== frontendRef.current.value,
 				),
 			});
 		} else {
@@ -478,7 +465,7 @@ function App() {
 			setRespostas({
 				...respostas,
 				interesse: respostas.interesse.filter(
-					(item) => item !== backendRef.current.value
+					(item) => item !== backendRef.current.value,
 				),
 			});
 		} else {
@@ -495,7 +482,7 @@ function App() {
 			setRespostas({
 				...respostas,
 				interesse: respostas.interesse.filter(
-					(item) => item !== gestaoRef.current.value
+					(item) => item !== gestaoRef.current.value,
 				),
 			});
 		} else {
@@ -512,7 +499,7 @@ function App() {
 			setRespostas({
 				...respostas,
 				interesse: respostas.interesse.filter(
-					(item) => item !== gerenciaRef.current.value
+					(item) => item !== gerenciaRef.current.value,
 				),
 			});
 		} else {
@@ -529,7 +516,7 @@ function App() {
 			setRespostas({
 				...respostas,
 				interesse: respostas.interesse.filter(
-					(item) => item !== vendasRef.current.value
+					(item) => item !== vendasRef.current.value,
 				),
 			});
 		} else {
@@ -558,7 +545,7 @@ function App() {
 			setRespostas({
 				...respostas,
 				diretorias: respostas.diretorias.filter(
-					(item) => item !== giRef.current.value
+					(item) => item !== giRef.current.value,
 				),
 			});
 		} else {
@@ -575,16 +562,13 @@ function App() {
 			setRespostas({
 				...respostas,
 				diretorias: respostas.diretorias.filter(
-					(item) => item !== comercialRef.current.value
+					(item) => item !== comercialRef.current.value,
 				),
 			});
 		} else {
 			setRespostas({
 				...respostas,
-				diretorias: [
-					...respostas.diretorias,
-					comercialRef.current.value,
-				],
+				diretorias: [...respostas.diretorias, comercialRef.current.value],
 			});
 		}
 	};
@@ -595,16 +579,13 @@ function App() {
 			setRespostas({
 				...respostas,
 				diretorias: respostas.diretorias.filter(
-					(item) => item !== projetosRef.current.value
+					(item) => item !== projetosRef.current.value,
 				),
 			});
 		} else {
 			setRespostas({
 				...respostas,
-				diretorias: [
-					...respostas.diretorias,
-					projetosRef.current.value,
-				],
+				diretorias: [...respostas.diretorias, projetosRef.current.value],
 			});
 		}
 	};
@@ -615,16 +596,13 @@ function App() {
 			setRespostas({
 				...respostas,
 				diretorias: respostas.diretorias.filter(
-					(item) => item !== marketingRef.current.value
+					(item) => item !== marketingRef.current.value,
 				),
 			});
 		} else {
 			setRespostas({
 				...respostas,
-				diretorias: [
-					...respostas.diretorias,
-					marketingRef.current.value,
-				],
+				diretorias: [...respostas.diretorias, marketingRef.current.value],
 			});
 		}
 	};
@@ -635,16 +613,13 @@ function App() {
 			setRespostas({
 				...respostas,
 				diretorias: respostas.diretorias.filter(
-					(item) => item !== presidenciaRef.current.value
+					(item) => item !== presidenciaRef.current.value,
 				),
 			});
 		} else {
 			setRespostas({
 				...respostas,
-				diretorias: [
-					...respostas.diretorias,
-					presidenciaRef.current.value,
-				],
+				diretorias: [...respostas.diretorias, presidenciaRef.current.value],
 			});
 		}
 	};
@@ -655,7 +630,7 @@ function App() {
 			setRespostas({
 				...respostas,
 				diretorias: respostas.diretorias.filter(
-					(item) => item !== dhoRef.current.value
+					(item) => item !== dhoRef.current.value,
 				),
 			});
 		} else {
@@ -753,7 +728,7 @@ function App() {
 				respostas.trilhas === "":
 				setErrorTitulo("Erro");
 				setErrorMessage(
-					"Os campos sobre o conhecimento da Pixel são todos obrigatórios"
+					"Os campos sobre o conhecimento da Pixel são todos obrigatórios",
 				);
 				handleOpen();
 				setLoading(false);
@@ -773,7 +748,7 @@ function App() {
 			case respostas.whatsapp.length < 9:
 				setErrorTitulo("Erro");
 				setErrorMessage(
-					"O campo Whatsapp deve conter um número de telefone válido"
+					"O campo Whatsapp deve conter um número de telefone válido",
 				);
 				handleOpen();
 				setLoading(false);
@@ -785,11 +760,12 @@ function App() {
 				break;
 			default:
 				setToken(false);
-				api.post("/", respostas)
+				api
+					.post("/", respostas)
 					.then(() => {
 						setErrorTitulo("Sucesso!");
 						setErrorMessage(
-							"Inscrição feita com sucesso! Aguarde o resultado no e-mail informado."
+							"Inscrição feita com sucesso! Aguarde o resultado no e-mail informado.",
 						);
 						setRespostas(respostas_padrao);
 						setSucesso(true);
@@ -798,7 +774,7 @@ function App() {
 					})
 					.catch(() => {
 						setErrorTitulo("Erro");
-						setErrorMessage(`Erro ao enviar os dados!`);
+						setErrorMessage("Erro ao enviar os dados!");
 						// console.log(error);
 						handleOpen();
 						setLoading(false);
@@ -839,13 +815,7 @@ function App() {
 					justifyContent="center"
 					alignItems="center"
 				>
-					<Grid
-						item
-						xs={12}
-						sm={12}
-						md={12}
-						style={{ marginTop: "20px" }}
-					>
+					<Grid item xs={12} sm={12} md={12} style={{ marginTop: "20px" }}>
 						<Card
 							sx={{
 								width: 0.95,
@@ -876,8 +846,7 @@ function App() {
 											}}
 											variant="h5"
 										>
-											Boas-vindas à primeira etapa do
-											processo 24.1 de recrutamento da
+											Boas-vindas à primeira etapa do processo seletivo da
 											Pixel!
 										</Typography>
 									</Grid>
@@ -891,15 +860,11 @@ function App() {
 											variant="p"
 										>
 											A{" "}
-											<Link
-												href="https://ejpixel.com.br/"
-												underline="none"
-											>
+											<Link href="https://ejpixel.com.br/" underline="none">
 												Pixel
 											</Link>{" "}
-											é a Empresa Júnior dos cursos de
-											Ciências da Computação e Sistemas de
-											Informação da UFSC
+											é a Empresa Júnior dos cursos de Ciências da Computação e
+											Sistemas de Informação da UFSC
 										</Typography>
 									</Grid>
 									<Grid
@@ -936,14 +901,12 @@ function App() {
 														mx: "auto",
 													}}
 												>
-													<InputLabel htmlFor="nome"></InputLabel>
+													<InputLabel htmlFor="nome" />
 													<TextField
 														required
 														id="nome"
 														inputRef={nomeRef}
-														onChange={
-															nomeChangeHandler
-														}
+														onChange={nomeChangeHandler}
 														label="Nome Completo"
 														variant="outlined"
 													/>
@@ -959,33 +922,19 @@ function App() {
 													}}
 												>
 													<InputLabel id="label-genero">
-														Com qual gênero você se
-														identifica?*
+														Com qual gênero você se identifica?*
 													</InputLabel>
 													<Select
 														labelId="label-genero"
 														label="Com qual gênero você se identifica?*"
 														value={respostas.genero}
-														onChange={
-															generoChangeHandler
-														}
+														onChange={generoChangeHandler}
 													>
-														{generos.map(
-															(option) => (
-																<MenuItem
-																	key={
-																		option.id
-																	}
-																	value={
-																		option.label
-																	}
-																>
-																	{
-																		option.label
-																	}
-																</MenuItem>
-															)
-														)}
+														{generos.map((option) => (
+															<MenuItem key={option.id} value={option.label}>
+																{option.label}
+															</MenuItem>
+														))}
 													</Select>
 												</FormControl>
 											</Grid>
@@ -999,24 +948,16 @@ function App() {
 													}}
 												>
 													<InputLabel id="label-raca">
-														Com qual grupo étnico
-														você se identifica?*
+														Com qual grupo étnico você se identifica?*
 													</InputLabel>
 													<Select
 														labelId="label-raca"
 														label="Com qual grupo étnico você se identifica?*"
 														value={respostas.raca}
-														onChange={
-															racaChangeHandler
-														}
+														onChange={racaChangeHandler}
 													>
 														{racas.map((option) => (
-															<MenuItem
-																key={option.id}
-																value={
-																	option.label
-																}
-															>
+															<MenuItem key={option.id} value={option.label}>
 																{option.label}
 															</MenuItem>
 														))}
@@ -1040,8 +981,7 @@ function App() {
 													}}
 													variant="h5"
 												>
-													Passo 2 : Informações
-													Acadêmicas
+													Passo 2 : Informações Acadêmicas
 												</Typography>
 											</Grid>
 											<Grid item xs={12} sm={6} md={6}>
@@ -1060,26 +1000,13 @@ function App() {
 														labelId="label-curso"
 														label="Qual é o seu curso?*"
 														value={respostas.curso}
-														onChange={
-															cursoChangeHandler
-														}
+														onChange={cursoChangeHandler}
 													>
-														{cursos.map(
-															(option) => (
-																<MenuItem
-																	key={
-																		option.id
-																	}
-																	value={
-																		option.label
-																	}
-																>
-																	{
-																		option.label
-																	}
-																</MenuItem>
-															)
-														)}
+														{cursos.map((option) => (
+															<MenuItem key={option.id} value={option.label}>
+																{option.label}
+															</MenuItem>
+														))}
 													</Select>
 												</FormControl>
 											</Grid>
@@ -1092,21 +1019,18 @@ function App() {
 														mx: "auto",
 													}}
 												>
-													<InputLabel htmlFor="matricula"></InputLabel>
+													<InputLabel htmlFor="matricula" />
 													<TextField
 														required
 														id="matricula"
 														{...(erroMatricula
 															? {
 																	error: true,
-																	helperText:
-																		erroMatricula,
-															  }
+																	helperText: erroMatricula,
+																}
 															: {})}
 														inputRef={matriculaRef}
-														onChange={
-															matriculaChangeHandler
-														}
+														onChange={matriculaChangeHandler}
 														label="Qual seu número de matrícula?"
 														variant="outlined"
 													/>
@@ -1120,7 +1044,7 @@ function App() {
 														mb: 3,
 													}}
 													variant="h5"
-												></Typography>
+												/>
 												<FormControl
 													variant="outlined"
 													sx={{
@@ -1138,17 +1062,10 @@ function App() {
 														marks
 														min={1}
 														max={8}
-														onChange={
-															changeFaseHandler
-														}
+														onChange={changeFaseHandler}
 													/>
-													<Typography
-														id="totalhoras"
-														sx={{ mx: "auto" }}
-													>
-														Fase que está no curso
-														(aproximadamente):{" "}
-														{fase}ª
+													<Typography id="totalhoras" sx={{ mx: "auto" }}>
+														Fase que está no curso (aproximadamente): {fase}ª
 													</Typography>
 												</FormControl>
 											</Grid>
@@ -1169,17 +1086,11 @@ function App() {
 														marks
 														min={12}
 														max={30}
-														onChange={
-															changeHorasHandler
-														}
+														onChange={changeHorasHandler}
 													/>
-													<Typography
-														id="totalhoras"
-														sx={{ mx: "auto" }}
-													>
-														Total de horas-aula que
-														está cursando esse
-														semestre: {horas} h.a.
+													<Typography id="totalhoras" sx={{ mx: "auto" }}>
+														Total de horas-aula que está cursando esse semestre:{" "}
+														{horas} h.a.
 													</Typography>
 												</FormControl>
 											</Grid>
@@ -1200,8 +1111,7 @@ function App() {
 													}}
 													variant="h5"
 												>
-													Passo 3 : Informações
-													Profissionais
+													Passo 3 : Informações Profissionais
 												</Typography>
 											</Grid>
 											<Grid item xs={12} sm={12} md={6}>
@@ -1216,9 +1126,7 @@ function App() {
 													<TextField
 														id="trab"
 														inputRef={trabRef}
-														onChange={
-															trabChangeHandler
-														}
+														onChange={trabChangeHandler}
 														label="Você trabalha ou faz estágio atualmente? Fale sobre"
 														multiline
 														rows={4}
@@ -1238,9 +1146,7 @@ function App() {
 													<TextField
 														id="exp"
 														inputRef={expRef}
-														onChange={
-															expChangeHandler
-														}
+														onChange={expChangeHandler}
 														label="Trabalho ou experiência profissional prévia? Fale sobre"
 														multiline
 														rows={4}
@@ -1266,8 +1172,7 @@ function App() {
 													}}
 													variant="h5"
 												>
-													Passo 4 : Habilidades e
-													tecnologias
+													Passo 4 : Habilidades e tecnologias
 												</Typography>
 											</Grid>
 											<Grid item xs={12} sm={4} md={3}>
@@ -1279,85 +1184,53 @@ function App() {
 													}}
 												>
 													<Typography htmlFor="idiomas">
-														Quais desses idiomas
-														você compreende?
+														Quais desses idiomas você compreende?
 													</Typography>
 													<FormGroup row>
 														<FormControlLabel
 															control={
 																<Checkbox
 																	sx={{
-																		color: theme
-																			.palette
-																			.midnight
-																			.main,
-																		"&.Mui-checked":
-																			{
-																				color: theme
-																					.palette
-																					.spacecadet
-																					.main,
-																			},
+																		color: theme.palette.midnight.main,
+																		"&.Mui-checked": {
+																			color: theme.palette.spacecadet.main,
+																		},
 																	}}
 																/>
 															}
 															label="Inglês"
 															inputRef={inglesRef}
-															onChange={
-																inglesChangeHandler
-															}
+															onChange={inglesChangeHandler}
 														/>
 														<FormControlLabel
 															control={
 																<Checkbox
 																	sx={{
-																		color: theme
-																			.palette
-																			.midnight
-																			.main,
-																		"&.Mui-checked":
-																			{
-																				color: theme
-																					.palette
-																					.spacecadet
-																					.main,
-																			},
+																		color: theme.palette.midnight.main,
+																		"&.Mui-checked": {
+																			color: theme.palette.spacecadet.main,
+																		},
 																	}}
 																/>
 															}
 															label="Mandarim"
-															inputRef={
-																mandarimRef
-															}
-															onChange={
-																mandarimChangeHandler
-															}
+															inputRef={mandarimRef}
+															onChange={mandarimChangeHandler}
 														/>
 														<FormControlLabel
 															control={
 																<Checkbox
 																	sx={{
-																		color: theme
-																			.palette
-																			.midnight
-																			.main,
-																		"&.Mui-checked":
-																			{
-																				color: theme
-																					.palette
-																					.spacecadet
-																					.main,
-																			},
+																		color: theme.palette.midnight.main,
+																		"&.Mui-checked": {
+																			color: theme.palette.spacecadet.main,
+																		},
 																	}}
 																/>
 															}
 															label="Espanhol"
-															inputRef={
-																espanholRef
-															}
-															onChange={
-																espanholChangeHandler
-															}
+															inputRef={espanholRef}
+															onChange={espanholChangeHandler}
 														/>
 													</FormGroup>
 												</FormControl>
@@ -1371,158 +1244,99 @@ function App() {
 													}}
 												>
 													<Typography htmlFor="tecnologias">
-														Quais dessas tecnologias
-														você tem algum
-														conhecimento sobre?
+														Quais dessas tecnologias você tem algum conhecimento
+														sobre?
 													</Typography>
 													<FormGroup row>
 														<FormControlLabel
 															control={
 																<Checkbox
 																	sx={{
-																		color: theme
-																			.palette
-																			.midnight
-																			.main,
-																		"&.Mui-checked":
-																			{
-																				color: theme
-																					.palette
-																					.spacecadet
-																					.main,
-																			},
+																		color: theme.palette.midnight.main,
+																		"&.Mui-checked": {
+																			color: theme.palette.spacecadet.main,
+																		},
 																	}}
 																/>
 															}
 															label="JavaScript"
-															inputRef={
-																javascriptRef
-															}
-															onChange={
-																javascriptChangeHandler
-															}
+															inputRef={javascriptRef}
+															onChange={javascriptChangeHandler}
 														/>
 														<FormControlLabel
 															control={
 																<Checkbox
 																	sx={{
-																		color: theme
-																			.palette
-																			.midnight
-																			.main,
-																		"&.Mui-checked":
-																			{
-																				color: theme
-																					.palette
-																					.spacecadet
-																					.main,
-																			},
+																		color: theme.palette.midnight.main,
+																		"&.Mui-checked": {
+																			color: theme.palette.spacecadet.main,
+																		},
 																	}}
 																/>
 															}
 															label="Node.js"
 															inputRef={nodejsRef}
-															onChange={
-																nodejsChangeHandler
-															}
+															onChange={nodejsChangeHandler}
 														/>
 														<FormControlLabel
 															control={
 																<Checkbox
 																	sx={{
-																		color: theme
-																			.palette
-																			.midnight
-																			.main,
-																		"&.Mui-checked":
-																			{
-																				color: theme
-																					.palette
-																					.spacecadet
-																					.main,
-																			},
+																		color: theme.palette.midnight.main,
+																		"&.Mui-checked": {
+																			color: theme.palette.spacecadet.main,
+																		},
 																	}}
 																/>
 															}
 															label="React"
 															inputRef={reactRef}
-															onChange={
-																reactChangeHandler
-															}
+															onChange={reactChangeHandler}
 														/>
 														<FormControlLabel
 															control={
 																<Checkbox
 																	sx={{
-																		color: theme
-																			.palette
-																			.midnight
-																			.main,
-																		"&.Mui-checked":
-																			{
-																				color: theme
-																					.palette
-																					.spacecadet
-																					.main,
-																			},
+																		color: theme.palette.midnight.main,
+																		"&.Mui-checked": {
+																			color: theme.palette.spacecadet.main,
+																		},
 																	}}
 																/>
 															}
 															label="Wordpress"
-															inputRef={
-																wordpressRef
-															}
-															onChange={
-																wordpressChangeHandler
-															}
+															inputRef={wordpressRef}
+															onChange={wordpressChangeHandler}
 														/>
 														<FormControlLabel
 															control={
 																<Checkbox
 																	sx={{
-																		color: theme
-																			.palette
-																			.midnight
-																			.main,
-																		"&.Mui-checked":
-																			{
-																				color: theme
-																					.palette
-																					.spacecadet
-																					.main,
-																			},
+																		color: theme.palette.midnight.main,
+																		"&.Mui-checked": {
+																			color: theme.palette.spacecadet.main,
+																		},
 																	}}
 																/>
 															}
 															label="Next.js"
 															inputRef={nextjsRef}
-															onChange={
-																nextjsChangeHandler
-															}
+															onChange={nextjsChangeHandler}
 														/>
 														<FormControlLabel
 															control={
 																<Checkbox
 																	sx={{
-																		color: theme
-																			.palette
-																			.midnight
-																			.main,
-																		"&.Mui-checked":
-																			{
-																				color: theme
-																					.palette
-																					.spacecadet
-																					.main,
-																			},
+																		color: theme.palette.midnight.main,
+																		"&.Mui-checked": {
+																			color: theme.palette.spacecadet.main,
+																		},
 																	}}
 																/>
 															}
 															label="CSS"
 															inputRef={cssRef}
-															onChange={
-																cssChangeHandler
-															}
+															onChange={cssChangeHandler}
 														/>
 													</FormGroup>
 												</FormControl>
@@ -1536,136 +1350,84 @@ function App() {
 													}}
 												>
 													<Typography htmlFor="gostaria">
-														Em quais dessas áreas
-														você tem interesse?
+														Em quais dessas áreas você tem interesse?
 													</Typography>
 													<FormGroup row>
 														<FormControlLabel
 															control={
 																<Checkbox
 																	sx={{
-																		color: theme
-																			.palette
-																			.midnight
-																			.main,
-																		"&.Mui-checked":
-																			{
-																				color: theme
-																					.palette
-																					.spacecadet
-																					.main,
-																			},
+																		color: theme.palette.midnight.main,
+																		"&.Mui-checked": {
+																			color: theme.palette.spacecadet.main,
+																		},
 																	}}
 																/>
 															}
 															label="Front-end"
-															inputRef={
-																frontendRef
-															}
-															onChange={
-																frontendChangeHandler
-															}
+															inputRef={frontendRef}
+															onChange={frontendChangeHandler}
 														/>
 														<FormControlLabel
 															control={
 																<Checkbox
 																	sx={{
-																		color: theme
-																			.palette
-																			.midnight
-																			.main,
-																		"&.Mui-checked":
-																			{
-																				color: theme
-																					.palette
-																					.spacecadet
-																					.main,
-																			},
+																		color: theme.palette.midnight.main,
+																		"&.Mui-checked": {
+																			color: theme.palette.spacecadet.main,
+																		},
 																	}}
 																/>
 															}
 															label="Back-end"
-															inputRef={
-																backendRef
-															}
-															onChange={
-																backendChangeHandler
-															}
+															inputRef={backendRef}
+															onChange={backendChangeHandler}
 														/>
 														<FormControlLabel
 															control={
 																<Checkbox
 																	sx={{
-																		color: theme
-																			.palette
-																			.midnight
-																			.main,
-																		"&.Mui-checked":
-																			{
-																				color: theme
-																					.palette
-																					.spacecadet
-																					.main,
-																			},
+																		color: theme.palette.midnight.main,
+																		"&.Mui-checked": {
+																			color: theme.palette.spacecadet.main,
+																		},
 																	}}
 																/>
 															}
 															label="Gestão de Empresas"
 															inputRef={gestaoRef}
-															onChange={
-																gestaoChangeHandler
-															}
+															onChange={gestaoChangeHandler}
 														/>
 
 														<FormControlLabel
 															control={
 																<Checkbox
 																	sx={{
-																		color: theme
-																			.palette
-																			.midnight
-																			.main,
-																		"&.Mui-checked":
-																			{
-																				color: theme
-																					.palette
-																					.spacecadet
-																					.main,
-																			},
+																		color: theme.palette.midnight.main,
+																		"&.Mui-checked": {
+																			color: theme.palette.spacecadet.main,
+																		},
 																	}}
 																/>
 															}
 															label="Gerência de Projetos"
-															inputRef={
-																gerenciaRef
-															}
-															onChange={
-																gerenciaChangeHandler
-															}
+															inputRef={gerenciaRef}
+															onChange={gerenciaChangeHandler}
 														/>
 														<FormControlLabel
 															control={
 																<Checkbox
 																	sx={{
-																		color: theme
-																			.palette
-																			.midnight
-																			.main,
-																		"&.Mui-checked":
-																			{
-																				color: theme
-																					.palette
-																					.spacecadet
-																					.main,
-																			},
+																		color: theme.palette.midnight.main,
+																		"&.Mui-checked": {
+																			color: theme.palette.spacecadet.main,
+																		},
 																	}}
 																/>
 															}
 															label="Vendas e Marketing"
 															inputRef={vendasRef}
-															onChange={
-																vendasChangeHandler
-															}
+															onChange={vendasChangeHandler}
 														/>
 													</FormGroup>
 												</FormControl>
@@ -1687,8 +1449,7 @@ function App() {
 													}}
 													variant="h5"
 												>
-													Passo 5 : Expectativas em
-													relação à Pixel
+													Passo 5 : Expectativas em relação à Pixel
 												</Typography>
 											</Grid>
 											<Grid item xs={12} sm={12} md={4}>
@@ -1706,9 +1467,7 @@ function App() {
 														rows={4}
 														defaultValue=""
 														inputRef={atraiuRef}
-														onChange={
-															atraiuChangeHandler
-														}
+														onChange={atraiuChangeHandler}
 													/>
 												</FormControl>
 											</Grid>
@@ -1727,9 +1486,7 @@ function App() {
 														rows={4}
 														defaultValue=""
 														inputRef={expectRef}
-														onChange={
-															expectChangeHandler
-														}
+														onChange={expectChangeHandler}
 													/>
 												</FormControl>
 											</Grid>
@@ -1748,9 +1505,7 @@ function App() {
 														rows={4}
 														defaultValue=""
 														inputRef={agregarRef}
-														onChange={
-															agregarChangeHandler
-														}
+														onChange={agregarChangeHandler}
 													/>
 												</FormControl>
 											</Grid>
@@ -1772,217 +1527,112 @@ function App() {
 														}}
 													>
 														<FormGroup row>
-															<Grid
-																item
-																xs={12}
-																sm={12}
-																md={12}
-															>
+															<Grid item xs={12} sm={12} md={12}>
 																<Typography htmlFor="diretorias">
-																	Em quais
-																	diretorias
-																	da Pixel
-																	você tem
-																	interesse em
-																	atuar?
+																	Em quais diretorias da Pixel você tem
+																	interesse em atuar?
 																</Typography>
 															</Grid>
-															<Tooltip
-																title={
-																	descricoes.gi
-																}
-																arrow
-															>
+															<Tooltip title={descricoes.gi} arrow>
 																<FormControlLabel
 																	control={
 																		<Checkbox
 																			sx={{
-																				color: theme
-																					.palette
-																					.midnight
-																					.main,
-																				"&.Mui-checked":
-																					{
-																						color: theme
-																							.palette
-																							.spacecadet
-																							.main,
-																					},
+																				color: theme.palette.midnight.main,
+																				"&.Mui-checked": {
+																					color: theme.palette.spacecadet.main,
+																				},
 																			}}
 																		/>
 																	}
 																	label="Gestão Interna"
-																	inputRef={
-																		giRef
-																	}
-																	onChange={
-																		giChangeHandler
-																	}
+																	inputRef={giRef}
+																	onChange={giChangeHandler}
 																/>
 															</Tooltip>
-															<Tooltip
-																title={
-																	descricoes.comercial
-																}
-																arrow
-															>
+															<Tooltip title={descricoes.comercial} arrow>
 																<FormControlLabel
 																	control={
 																		<Checkbox
 																			sx={{
-																				color: theme
-																					.palette
-																					.midnight
-																					.main,
-																				"&.Mui-checked":
-																					{
-																						color: theme
-																							.palette
-																							.spacecadet
-																							.main,
-																					},
+																				color: theme.palette.midnight.main,
+																				"&.Mui-checked": {
+																					color: theme.palette.spacecadet.main,
+																				},
 																			}}
 																		/>
 																	}
 																	label="Comercial"
-																	inputRef={
-																		comercialRef
-																	}
-																	onChange={
-																		comercialChangeHandler
-																	}
+																	inputRef={comercialRef}
+																	onChange={comercialChangeHandler}
 																/>
 															</Tooltip>
-															<Tooltip
-																title={
-																	descricoes.projetos
-																}
-																arrow
-															>
+															<Tooltip title={descricoes.projetos} arrow>
 																<FormControlLabel
 																	control={
 																		<Checkbox
 																			sx={{
-																				color: theme
-																					.palette
-																					.midnight
-																					.main,
-																				"&.Mui-checked":
-																					{
-																						color: theme
-																							.palette
-																							.spacecadet
-																							.main,
-																					},
+																				color: theme.palette.midnight.main,
+																				"&.Mui-checked": {
+																					color: theme.palette.spacecadet.main,
+																				},
 																			}}
 																		/>
 																	}
 																	label="Projetos"
-																	inputRef={
-																		projetosRef
-																	}
-																	onChange={
-																		projetosChangeHandler
-																	}
+																	inputRef={projetosRef}
+																	onChange={projetosChangeHandler}
 																/>
 															</Tooltip>
-															<Tooltip
-																title={
-																	descricoes.marketing
-																}
-																arrow
-															>
+															<Tooltip title={descricoes.marketing} arrow>
 																<FormControlLabel
 																	control={
 																		<Checkbox
 																			sx={{
-																				color: theme
-																					.palette
-																					.midnight
-																					.main,
-																				"&.Mui-checked":
-																					{
-																						color: theme
-																							.palette
-																							.spacecadet
-																							.main,
-																					},
+																				color: theme.palette.midnight.main,
+																				"&.Mui-checked": {
+																					color: theme.palette.spacecadet.main,
+																				},
 																			}}
 																		/>
 																	}
 																	label="Marketing"
-																	inputRef={
-																		marketingRef
-																	}
-																	onChange={
-																		marketingChangeHandler
-																	}
+																	inputRef={marketingRef}
+																	onChange={marketingChangeHandler}
 																/>
 															</Tooltip>
-															<Tooltip
-																title={
-																	descricoes.presidencia
-																}
-																arrow
-															>
+															<Tooltip title={descricoes.presidencia} arrow>
 																<FormControlLabel
 																	control={
 																		<Checkbox
 																			sx={{
-																				color: theme
-																					.palette
-																					.midnight
-																					.main,
-																				"&.Mui-checked":
-																					{
-																						color: theme
-																							.palette
-																							.spacecadet
-																							.main,
-																					},
+																				color: theme.palette.midnight.main,
+																				"&.Mui-checked": {
+																					color: theme.palette.spacecadet.main,
+																				},
 																			}}
 																		/>
 																	}
 																	label="Presidência"
-																	inputRef={
-																		presidenciaRef
-																	}
-																	onChange={
-																		presidenciaChangeHandler
-																	}
+																	inputRef={presidenciaRef}
+																	onChange={presidenciaChangeHandler}
 																/>
 															</Tooltip>
-															<Tooltip
-																title={
-																	descricoes.dho
-																}
-																arrow
-															>
+															<Tooltip title={descricoes.dho} arrow>
 																<FormControlLabel
 																	control={
 																		<Checkbox
 																			sx={{
-																				color: theme
-																					.palette
-																					.midnight
-																					.main,
-																				"&.Mui-checked":
-																					{
-																						color: theme
-																							.palette
-																							.spacecadet
-																							.main,
-																					},
+																				color: theme.palette.midnight.main,
+																				"&.Mui-checked": {
+																					color: theme.palette.spacecadet.main,
+																				},
 																			}}
 																		/>
 																	}
 																	label="Desenvolvimento Humano e Organizacional"
-																	inputRef={
-																		dhoRef
-																	}
-																	onChange={
-																		dhoChangeHandler
-																	}
+																	inputRef={dhoRef}
+																	onChange={dhoChangeHandler}
 																/>
 															</Tooltip>
 														</FormGroup>
@@ -2006,8 +1656,7 @@ function App() {
 													}}
 													variant="h5"
 												>
-													Passo 6 : Conhecimento sobre
-													a Pixel*
+													Passo 6 : Conhecimento sobre a Pixel*
 												</Typography>
 											</Grid>
 											<Grid item xs={12} sm={12} md={12}>
@@ -2019,104 +1668,64 @@ function App() {
 														mx: "auto",
 													}}
 												>
-													<Grid
-														item
-														xs={12}
-														sm={12}
-														md={12}
-														sx={{ mb: 2 }}
-													>
+													<Grid item xs={12} sm={12} md={12} sx={{ mb: 2 }}>
 														<FormLabel component="legend">
-															O trabalho na Pixel
-															é remunerado?
+															O trabalho na Pixel é remunerado?
 														</FormLabel>
 														<RadioGroup
 															row
 															aria-label="remunera"
 															name="remunera"
-															onChange={
-																remuneraChangeHandler
-															}
+															onChange={remuneraChangeHandler}
 														>
 															<FormControlLabel
 																value="Sim"
-																control={
-																	<Radio />
-																}
+																control={<Radio />}
 																label="Sim"
 															/>
 															<FormControlLabel
 																value="Não"
-																control={
-																	<Radio />
-																}
+																control={<Radio />}
 																label="Não"
 															/>
 															<FormControlLabel
 																value="Somente quando desenvolvo"
-																control={
-																	<Radio />
-																}
+																control={<Radio />}
 																label="Somente quando desenvolvo"
 															/>
 														</RadioGroup>
 													</Grid>
-													<Grid
-														item
-														xs={12}
-														sm={12}
-														md={12}
-														sx={{ mb: 2 }}
-													>
+													<Grid item xs={12} sm={12} md={12} sx={{ mb: 2 }}>
 														<FormLabel component="legend">
-															Em qual horário
-															pretende estar nas
-															reuniões remotas com
-															a câmera e microfone
-															ligados?
+															Em qual horário pretende estar nas reuniões
+															remotas com a câmera e microfone ligados?
 														</FormLabel>
 														<RadioGroup
 															row
 															aria-label="reuniao"
 															name="reuniao"
-															onChange={
-																reuniaoChangeHandler
-															}
+															onChange={reuniaoChangeHandler}
 														>
 															<FormControlLabel
 																value="22:30"
-																control={
-																	<Radio />
-																}
+																control={<Radio />}
 																label="22:30"
 															/>
 															<FormControlLabel
 																value="23:00"
-																control={
-																	<Radio />
-																}
+																control={<Radio />}
 																label="23:00"
 															/>
 															<FormControlLabel
 																value="Assim que chegar em casa"
-																control={
-																	<Radio />
-																}
+																control={<Radio />}
 																label="Assim que chegar em casa"
 															/>
 														</RadioGroup>
 													</Grid>
-													<Grid
-														item
-														xs={12}
-														sm={612}
-														md={12}
-														sx={{ mb: 2 }}
-													>
+													<Grid item xs={12} sm={612} md={12} sx={{ mb: 2 }}>
 														<FormLabel component="legend">
-															Quantas horas
-															semanais pretende
-															dedicar às
+															Quantas horas semanais pretende dedicar às
 															atividades na Pixel?
 														</FormLabel>
 
@@ -2124,115 +1733,75 @@ function App() {
 															row
 															aria-label="oitohoras"
 															name="oitohoras"
-															onChange={
-																oitohorasChangeHandler
-															}
+															onChange={oitohorasChangeHandler}
 														>
 															<FormControlLabel
 																value="Quatro"
-																control={
-																	<Radio />
-																}
+																control={<Radio />}
 																label="Quatro"
 															/>
 															<FormControlLabel
 																value="Oito"
-																control={
-																	<Radio />
-																}
+																control={<Radio />}
 																label="Oito"
 															/>
 															<FormControlLabel
 																value="Doze"
-																control={
-																	<Radio />
-																}
+																control={<Radio />}
 																label="Doze"
 															/>
 														</RadioGroup>
 													</Grid>
-													<Grid
-														item
-														xs={12}
-														sm={12}
-														md={12}
-														sx={{ mb: 2 }}
-													>
+													<Grid item xs={12} sm={12} md={12} sx={{ mb: 2 }}>
 														<FormLabel component="legend">
-															Qual dentre esses é
-															um dos valores da
-															Pixel?
+															Qual dentre esses é um dos valores da Pixel?
 														</FormLabel>
 														<RadioGroup
 															row
 															aria-label="inclusao"
 															name="inclusao"
-															onChange={
-																inclusaoChangeHandler
-															}
+															onChange={inclusaoChangeHandler}
 														>
 															<FormControlLabel
 																value="Faturamento"
-																control={
-																	<Radio />
-																}
+																control={<Radio />}
 																label="Faturamento"
 															/>
 															<FormControlLabel
 																value="Lucro"
-																control={
-																	<Radio />
-																}
+																control={<Radio />}
 																label="Lucro"
 															/>
 															<FormControlLabel
 																value="Diversidade"
-																control={
-																	<Radio />
-																}
+																control={<Radio />}
 																label="Diversidade"
 															/>
 														</RadioGroup>
 													</Grid>
-													<Grid
-														item
-														xs={12}
-														sm={12}
-														md={12}
-														sx={{ mb: 2 }}
-													>
+													<Grid item xs={12} sm={12} md={12} sx={{ mb: 2 }}>
 														<FormLabel component="legend">
-															Como pretende
-															capacitar-se na
-															Pixel?
+															Como pretende capacitar-se na Pixel?
 														</FormLabel>
 														<RadioGroup
 															row
 															aria-label="trilhas"
 															name="trilhas"
-															onChange={
-																trilhasChangeHandler
-															}
+															onChange={trilhasChangeHandler}
 														>
 															<FormControlLabel
 																value="Já tenho capacitação"
-																control={
-																	<Radio />
-																}
+																control={<Radio />}
 																label="Já tenho capacitação"
 															/>
 															<FormControlLabel
 																value="Estudando"
-																control={
-																	<Radio />
-																}
+																control={<Radio />}
 																label="Estudando"
 															/>
 															<FormControlLabel
 																value="Nas aulas síncronas ministradas pelos membros da Pixel aos sábados à noite"
-																control={
-																	<Radio />
-																}
+																control={<Radio />}
 																label="Nas aulas síncronas ministradas pelos membros da Pixel aos sábados à noite"
 															/>
 														</RadioGroup>
@@ -2256,8 +1825,7 @@ function App() {
 													}}
 													variant="h5"
 												>
-													Passo 7 : Informações de
-													contato
+													Passo 7 : Informações de contato
 												</Typography>
 											</Grid>
 											<Grid item xs={12} sm={6} md={3}>
@@ -2268,14 +1836,12 @@ function App() {
 														mx: "auto",
 													}}
 												>
-													<InputLabel htmlFor="email"></InputLabel>
+													<InputLabel htmlFor="email" />
 													<TextField
 														required
 														id="email"
 														inputRef={emailRef}
-														onChange={
-															emailChangeHandler
-														}
+														onChange={emailChangeHandler}
 														label="E-mail"
 														variant="outlined"
 													/>
@@ -2289,21 +1855,18 @@ function App() {
 														mx: "auto",
 													}}
 												>
-													<InputLabel htmlFor="whatsapp"></InputLabel>
+													<InputLabel htmlFor="whatsapp" />
 													<TextField
 														required
 														{...(erroWhatsapp
 															? {
 																	error: true,
-																	helperText:
-																		erroWhatsapp,
-															  }
+																	helperText: erroWhatsapp,
+																}
 															: {})}
 														id="whatsapp"
 														inputRef={whatsappRef}
-														onChange={
-															whatsappChangeHandler
-														}
+														onChange={whatsappChangeHandler}
 														label="WhatsApp"
 														variant="outlined"
 													/>
@@ -2317,13 +1880,11 @@ function App() {
 														mx: "auto",
 													}}
 												>
-													<InputLabel htmlFor="linkedin"></InputLabel>
+													<InputLabel htmlFor="linkedin" />
 													<TextField
 														id="linkedin"
 														inputRef={linkedinRef}
-														onChange={
-															linkedinChangeHandler
-														}
+														onChange={linkedinChangeHandler}
 														label="LinkedIn"
 														variant="outlined"
 													/>
@@ -2337,13 +1898,11 @@ function App() {
 														mx: "auto",
 													}}
 												>
-													<InputLabel htmlFor="github"></InputLabel>
+													<InputLabel htmlFor="github" />
 													<TextField
 														id="github"
 														inputRef={githubRef}
-														onChange={
-															githubChangeHandler
-														}
+														onChange={githubChangeHandler}
 														label="GitHub"
 														variant="outlined"
 													/>
@@ -2359,64 +1918,39 @@ function App() {
 											alignItems="center"
 										>
 											<Grid item xs={12} sm={6} md={6}>
-												<Typography
-													sx={{ align: "justify" }}
-													variant="h5"
-												/>
+												<Typography sx={{ align: "justify" }} variant="h5" />
 												<ReCaptcha
 													ref={recaptchaRef}
 													sitekey="6LefiZwpAAAAACAPYBupkycHvuK3j-Y7016LVZ9g"
-													onChange={
-														geraTokenRecaptcha
-													}
+													onChange={geraTokenRecaptcha}
 												/>{" "}
 											</Grid>
 											<Grid item xs={12} sm={6} md={6}>
 												<Button
 													disabled={
-														loading ||
-														!preenchidos ||
-														sucesso ||
-														!token
+														loading || !preenchidos || sucesso || !token
 													}
 													variant="contained"
 													endIcon={<SendIcon />}
 													sx={{
 														width: 1,
 														mx: "auto",
-														backgroundColor:
-															theme.palette
-																.midnight.main,
-														color: theme.palette
-															.sunrise.main,
+														backgroundColor: theme.palette.midnight.main,
+														color: theme.palette.sunrise.main,
 													}}
 													onClick={enviarHandler}
 												>
-													{loading ? (
-														<CircularProgress
-															size={24}
-														/>
-													) : (
-														"Enviar"
-													)}
+													{loading ? <CircularProgress size={24} /> : "Enviar"}
 												</Button>
 											</Grid>
 											<Grid item xs={12} sm={12} md={12}>
-												<Typography
-													variant="p"
-													sx={{ fontSize: "0.8rem" }}
-												>
-													Os campos com * são
-													necessários
+												<Typography variant="p" sx={{ fontSize: "0.8rem" }}>
+													Os campos com * são necessários
 												</Typography>
 											</Grid>
 											<Grid item xs={12} sm={12} md={12}>
-												<Typography
-													variant="p"
-													sx={{ fontSize: "0.8rem" }}
-												>
-													Baixe o manual do processo
-													clicando{" "}
+												<Typography variant="p" sx={{ fontSize: "0.8rem" }}>
+													Baixe o manual do processo clicando{" "}
 													<Link
 														target="_blank"
 														rel="noopener"
@@ -2465,9 +1999,7 @@ function App() {
 									>
 										MERN
 									</Link>
-									, por Rudolfo Lange Neto, Diretor Executivo
-									de Desenvolvimento Humano e Organizacional
-									na Pixel
+									, por Rudolfo Lange Neto, Presidente da Pixel
 								</Typography>
 							</Grid>
 						</Grid>
@@ -2480,16 +2012,10 @@ function App() {
 					aria-describedby="modal-modal-description"
 				>
 					<Box sx={style}>
-						<Typography
-							id="modal-modal-title"
-							variant="h6"
-							component="h2"
-						>
+						<Typography id="modal-modal-title" variant="h6" component="h2">
 							{errorTitulo}
 						</Typography>
-						<Typography id="modal-modal-description">
-							{errorMessage}
-						</Typography>
+						<Typography id="modal-modal-description">{errorMessage}</Typography>
 					</Box>
 				</Modal>
 			</div>
