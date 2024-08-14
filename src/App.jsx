@@ -765,7 +765,7 @@ function App() {
 					.then(() => {
 						setErrorTitulo("Sucesso!");
 						setErrorMessage(
-							"Inscrição feita com sucesso! Aguarde o resultado no e-mail informado.",
+							"Inscrição feita com sucesso! Agora é só enviar sua carta de motivação para dho@ejpixel.com.br para conhecermos você melhor, contando um pouco sobre a sua motivação para entrar na pixel, e no que você pretende agregar à EJ.",
 						);
 						setRespostas(respostas_padrao);
 						setSucesso(true);
