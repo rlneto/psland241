@@ -2012,10 +2012,20 @@ function App() {
 					aria-describedby="modal-modal-description"
 				>
 					<Box sx={style}>
-						<Typography id="modal-modal-title" variant="h6" component="h2">
+						<Typography
+							id="modal-modal-title"
+							variant="h6"
+							component="h2"
+							sx={{ textAlign: "center" }}
+						>
 							{errorTitulo}
 						</Typography>
-						<Typography id="modal-modal-description">{errorMessage}</Typography>
+						<Typography
+							id="modal-modal-description"
+							sx={{ textAlign: "justify" }}
+						>
+							{errorMessage}
+						</Typography>
 					</Box>
 				</Modal>
 			</div>
