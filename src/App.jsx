@@ -860,7 +860,12 @@ function App() {
 											variant="p"
 										>
 											A{" "}
-											<Link href="https://ejpixel.com.br/" underline="none">
+											<Link
+												href="https://ejpixel.com.br/"
+												underline="none"
+												target="_blank"
+												rel="noopener noreferrer"
+											>
 												Pixel
 											</Link>{" "}
 											é a Empresa Júnior dos cursos de Ciências da Computação e
@@ -1988,6 +1993,8 @@ function App() {
 										href="https://react.dev/"
 										underline="none"
 										color="#1CACD8"
+										target="_blank"
+										rel="noopener noreferrer"
 									>
 										React
 									</Link>
@@ -1996,6 +2003,8 @@ function App() {
 										href="https://www.mongodb.com/mern-stack"
 										underline="none"
 										color="#1CACD8"
+										target="_blank"
+										rel="noopener noreferrer"
 									>
 										MERN
 									</Link>
@@ -2004,6 +2013,8 @@ function App() {
 										href="https://www.linkedin.com/in/rudolfoneto"
 										underline="none"
 										color="#1CACD8"
+										target="_blank"
+										rel="noopener noreferrer"
 									>
 										Rudolfo Lange Neto
 									</Link>
