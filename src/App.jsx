@@ -1999,7 +1999,15 @@ function App() {
 									>
 										MERN
 									</Link>
-									, por Rudolfo Lange Neto, Presidente da Pixel
+									, por
+									<Link
+										href="https://www.linkedin.com/in/rudolfoneto"
+										underline="none"
+										color="#1CACD8"
+									>
+										Rudolfo Lange Neto
+									</Link>
+									, Presidente da Pixel
 								</Typography>
 							</Grid>
 						</Grid>
