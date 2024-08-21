@@ -2008,7 +2008,7 @@ function App() {
 									>
 										MERN
 									</Link>
-									, por
+									, por{" "}
 									<Link
 										href="https://www.linkedin.com/in/rudolfoneto"
 										underline="none"
